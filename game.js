@@ -1,10 +1,65 @@
+
+
+const IMG1 = "./img/bg_elem_1.png";
+const IMG2 = "./img/bg_elem_2.png";
+const IMG3 = "./img/charakter_1.png";
+const IMG4 = "./img/charakter_2.png";
+const IMG5 = "./img/charakter_3.png";
+const IMG6 = "./img/charakter_4.png";
+const IMG7 = "./img/charakter_jumping.png";
+const IMG8 = "./img/charakter_left_1.png";
+const IMG9 = "./img/charakter_left_2.png";
+const IMG10 = "./img/charakter_left_3.png";
+const IMG11 = "./img/charakter_left_4.png";
+const IMG12 = "./img/chicken_big.png";
+const IMG13 = "./img/chicken_dead.png";
+const IMG14 = "./img/chicken1.png";
+const IMG15 = "./img/chicken2.png";
+const IMG16 = "./img/cloud1.png";
+const IMG17 = "./img/cloud2.png";
+const IMG18 = "./img/hit.png";
+const IMG19 = "./img/sand.png";
+const IMG20 = "./img/tabasco.png";
+
+let imagePaths = [
+  IMG1,
+  IMG2,
+  IMG3,
+  IMG4,
+  IMG5,
+  IMG6,
+  IMG7,
+  IMG8,
+  IMG9,
+  IMG10,
+  IMG11,
+  IMG12,
+  IMG13,
+  IMG14,
+  IMG15,
+  IMG16,
+  IMG17,
+  IMG18,
+  IMG19,
+  IMG20,
+];
+
+
 let canvas;
 
 let ctx;
 
 let character_x = 100;
 
-let character_y = 250;
+let character_y = 95;
+
+let chickenyellow_x = 300;
+
+let chickenyellow_y = 350;
+
+let chickenbrown_x = 300;
+
+let chickenbrown_y = 350;
 
 let character_energy = 100;
 
@@ -18,20 +73,44 @@ let bg_elements = 0;
 
 let lastJumpStarted = 0;
 
-let currentCharacterImage = "img/charakter_1.png";
+let currentCharacterImage = "img/charakter_walk_1.png";
+
+let currentyellowChickenImage = "img/yellow_chicken_1.png";
+
+let currentbrownChickenImage = "img/brown_chicken_1.png";
 
 let characterGraphicsRight = [
-  "img/charakter_1.png",
-  "img/charakter_2.png",
-  "img/charakter_3.png",
-  "img/charakter_4.png",
+  // "img/charakter_1.png",
+  // "img/charakter_2.png",
+  // "img/charakter_3.png",
+  // "img/charakter_4.png",
+
+  "img/charakter_walk_1.png",
+  "img/charakter_walk_2.png",
+  "img/charakter_walk_3.png",
+  "img/charakter_walk_4.png",
+  "img/charakter_walk_5.png",
+  "img/charakter_walk_6.png",
 ];
 
-let characterGraphicsLeft = [
-  "img/charakter_left_1.png",
-  "img/charakter_left_2.png",
-  "img/charakter_left_3.png",
-  "img/charakter_left_4.png",
+//let characterGraphicsLeft = [
+//  "img/charakter_left_1.png",
+//  "img/charakter_left_2.png",
+//  "img/charakter_left_3.png",
+//  "img/charakter_left_4.png",
+//];
+
+
+let brownChicken = [
+"img/brown_chicken_1.png",
+"img/brown_chicken_2.png",
+"img/brown_chicken_3.png",];
+
+
+let yellowChicken = [
+  "img/yellow_chicken_1.png",
+  "img/yellow_chicken_2.png",
+  "img/yellow_chicken_3.png",
 ];
 
 let characterGraphicIndex = 0;
@@ -84,14 +163,40 @@ AUDIO_BACKGROUND_MUSIC.loop = true;
 
 AUDIO_BACKGROUND_MUSIC.volume = 0.2;
 
+
+
+//function preloadImages(){
+
+  //for(let i = 0; i < imagePaths.length; i++) {
+
+    //let image = new Image();
+
+    //image.src = imagePaths[i];
+
+    //imagePaths.push(image);
+
+
+
+  //}
+
+
+
+
+
+//}
+
 function init() {
   canvas = document.getElementById("canvas");
 
   ctx = canvas.getContext("2d");
 
-  createChickenList();
+  //createChickenList();
 
   checkForRunning();
+
+  yellowChicken_move();
+
+  brownChicken_move();
 
   draw();
 
@@ -100,6 +205,10 @@ function init() {
   listenForKeys();
 
   calculateChickenPosition();
+
+  calculateChickenYellowPosition();
+
+  calculateChickenBrownPosition();
 
   checkForCollision();
 }
@@ -176,26 +285,102 @@ function calculateChickenPosition() {
   }, 50);
 }
 
-function createChickenList() {
-  chickens = [
-    createChicken(1, 700),
-    createChicken(2, 1400),
-    createChicken(1, 1800),
-    createChicken(1, 2500),
-    createChicken(2, 3000),
-    createChicken(1, 3300),
-    createChicken(1, 3800),
-    createChicken(2, 4100),
-    createChicken(2, 4400),
-    createChicken(1, 4900),
-  ];
-}
+//function createChickenList() {
+ // chickens = [
+  //  createChicken(1, 700),
+  //];
+//}
 
 function calculateCloudOffset() {
   setInterval(function () {
     cloudOffset = cloudOffset + 0.25;
   }, 50);
 }
+
+
+
+
+function yellowChicken_move(){
+
+  setInterval(function () {
+
+  
+
+  let index = characterGraphicIndex % yellowChicken.length;
+
+  currentChickenImage = yellowChicken[index];
+
+  characterGraphicIndex = characterGraphicIndex +1;
+
+},300);
+
+}
+
+
+function brownChicken_move() {
+  setInterval(function () {
+    let index = characterGraphicIndex % yellowChicken.length;
+
+    currentChickenImage = brownChicken[index];
+
+    characterGraphicIndex = characterGraphicIndex + 1;
+  }, 300);
+}
+
+
+function yellowChicken_animated(){
+
+  let base_image = new Image();
+  base_image.src= currentyellowChickenImage;
+
+  if(base_image.complete){
+
+    ctx.drawImage(
+      base_image,
+      chickenyellow_x,
+      chickenyellow_y,
+      base_image.width * 0.25,
+      base_image.height * 0.25
+    );
+  }
+}
+
+
+function brownChicken_animated() {
+  let base_image = new Image();
+  base_image.src = currentbrownChickenImage;
+
+  if (base_image.complete) {
+    ctx.drawImage(
+      base_image,
+      chickenbrown_x,
+      chickenbrown_y,
+      base_image.width * 0.25,
+      base_image.height * 0.25
+    );
+  }
+}
+
+
+function calculateChickenYellowPosition() {
+  setInterval(function () {
+    for (let i = 0; i < yellowChicken.length; i++) {
+
+      chickenyellow_x = chickenyellow_x - 5;
+    }
+  }, 400);
+}
+
+function calculateChickenBrownPosition() {
+  setInterval(function () {
+    for (let i = 0; i < yellowChicken.length; i++) {
+      chickenbrown_x = chickenbrown_x - 5;
+    }
+  }, 400);
+}
+
+
+
 
 function checkForRunning() {
   setInterval(function () {
@@ -222,11 +407,13 @@ function checkForRunning() {
     if (!isMovingRight && !isMovingLeft) {
       AUDIO_RUNNING.pause();
     }
-  }, 100);
+  }, 200);
 }
 
 function draw() {
   drawBackground();
+
+   
 
   if (game_finished) {
     drawFinalScreen();
@@ -235,7 +422,11 @@ function draw() {
   } else {
     updateCharacter();
 
-    drawChicken();
+    yellowChicken_animated();
+
+    brownChicken_animated();
+
+   // drawChicken();
 
     drawBottles();
 
@@ -243,7 +434,9 @@ function draw() {
 
     drawEnergyBar();
 
-    drawInformation();
+    draw_tabascoDisplay();
+
+     draw_lifeDisplay();
 
     drawThrowBottle();
   }
@@ -251,16 +444,21 @@ function draw() {
 }
 
 function drawFinalScreen() {
-  ctx.font = "80px Lexend Peta";
+  ctx.font = "30px Lexend Peta";
 
-  let msg = "You won !";
+  let msg = "Level 1 is complete !";
 
+   
+ 
   if(character_lost_at > 0){
+    ctx.font = "50px Lexend Peta";
+    
 
     msg = "You lost !"
+     
   }
-
-  ctx.fillText(msg, 90, 230);
+ctx.fillText(msg, 90, 230);
+ 
 }
 
 function drawFinalBoss() {
@@ -322,7 +520,7 @@ function drawThrowBottle() {
   }
 }
 
-function drawInformation() {
+function draw_tabascoDisplay() {
   let base_image = new Image();
   base_image.src = "img/tabasco.png";
   if (base_image.complete) {
@@ -337,13 +535,30 @@ function drawInformation() {
 
   ctx.font = "20px Lexend Peta";
 
-  ctx.fillText("x" + collectedBottles, 40, 33);
+  ctx.fillText("x" + collectedBottles, 55, 50);
+}
+
+
+function draw_lifeDisplay() {
+  let base_image = new Image();
+  base_image.src = "img/life_100.png";
+  if (base_image.complete) {
+    ctx.drawImage(
+      base_image,
+      0,
+      60,
+      base_image.width * 0.3,
+      base_image.height * 0.3
+    );
+  }
+
+
 }
 
 function drawBottles() {
   for (let i = 0; i < placedBottles.length; i++) {
     let bottle_x = placedBottles[i];
-    addBackgroundObject("img/tabasco.png", bottle_x, 318, 0.7, 1);
+    addBackgroundObject("img/tabasco.png", bottle_x, 330, 0.5, 1);
   }
 }
 
@@ -372,15 +587,15 @@ function drawChicken() {
   }
 }
 
-function createChicken(type, position_x) {
-  return {
-    img: "img/chicken" + type + ".png",
-    position_x: position_x,
-    position_y: 325,
-    scale: 0.6,
-    speed: Math.random() * 5,
-  };
-}
+//function createChicken(type, position_x) {
+//  return {
+ //   img: "img/chicken_1_" + type + ".png",
+  //  position_x: position_x,
+  //  position_y: 290,
+  //  scale: 0.5,
+  //  speed: Math.random() * 5,
+  //};
+//}
 
 function updateCharacter() {
   let base_image = new Image();
@@ -393,8 +608,8 @@ function updateCharacter() {
   } else {
     // Check falling
 
-    if (character_y < 250) {
-      character_y = character_y + 10;
+    if (character_y < 105) {
+      character_y = character_y + 5;
     }
   }
 
@@ -403,8 +618,8 @@ function updateCharacter() {
       base_image,
       character_x,
       character_y,
-      base_image.width * 0.35,
-      base_image.height * 0.35
+      base_image.width * 0.25,
+      base_image.height * 0.25
     );
   }
 }
@@ -418,29 +633,29 @@ function drawBackground() {
 
   // Draw Clouds
 
-  addBackgroundObject("img/cloud1.png", 100 - cloudOffset, 20, 0.8, 1);
+ // addBackgroundObject("img/cloud1.png", 100 - cloudOffset, 20, 0.8, 1);
 
-  addBackgroundObject("img/cloud2.png", 500 - cloudOffset, 20, 0.6, 1);
+ // addBackgroundObject("img/cloud2.png", 500 - cloudOffset, 20, 0.6, 1);
 
-  addBackgroundObject("img/cloud1.png", 800 - cloudOffset, 20, 1, 1);
+ // addBackgroundObject("img/cloud1.png", 800 - cloudOffset, 20, 1, 1);
 
-  addBackgroundObject("img/cloud2.png", 1300 - cloudOffset, 20, 0.6, 1);
+ // addBackgroundObject("img/cloud2.png", 1300 - cloudOffset, 20, 0.6, 1);
 
-  addBackgroundObject("img/cloud1.png", 1800 - cloudOffset, 20, 1, 1);
+ // addBackgroundObject("img/cloud1.png", 1800 - cloudOffset, 20, 1, 1);
 
-  addBackgroundObject("img/cloud2.png", 2300 - cloudOffset, 20, 0.6, 1);
+ // addBackgroundObject("img/cloud2.png", 2300 - cloudOffset, 20, 0.6, 1);
 
-  addBackgroundObject("img/cloud1.png", 2800 - cloudOffset, 20, 1, 1);
+ // addBackgroundObject("img/cloud1.png", 2800 - cloudOffset, 20, 1, 1);
 
-  addBackgroundObject("img/cloud2.png", 3500 - cloudOffset, 20, 0.6, 1);
+ // addBackgroundObject("img/cloud2.png", 3500 - cloudOffset, 20, 0.6, 1);
 
-  addBackgroundObject("img/cloud1.png", 3900 - cloudOffset, 20, 1, 1);
+ // addBackgroundObject("img/cloud1.png", 3900 - cloudOffset, 20, 1, 1);
 
-  addBackgroundObject("img/cloud2.png", 4300 - cloudOffset, 20, 0.6, 1);
+ // addBackgroundObject("img/cloud2.png", 4300 - cloudOffset, 20, 0.6, 1);
 
-  addBackgroundObject("img/cloud1.png", 4700 - cloudOffset, 20, 1, 1);
+ // addBackgroundObject("img/cloud1.png", 4700 - cloudOffset, 20, 1, 1);
 
-  addBackgroundObject("img/cloud2.png", 5200 - cloudOffset, 20, 0.6, 1);
+ // addBackgroundObject("img/cloud2.png", 5200 - cloudOffset, 20, 0.6, 1);
 }
 
 function drawGround() {
@@ -452,44 +667,61 @@ function drawGround() {
     bg_elements = bg_elements + GAME_SPEED;
   }
 
-  addBackgroundObject("img/bg_elem_1.png", 0, 195, 0.6, 0.4);
 
-  addBackgroundObject("img/bg_elem_2.png", 450, 120, 0.6, 0.5);
+  addBackgroundObject("img/background.png", 0, 0, 0.4, 1);
 
-  addBackgroundObject("img/bg_elem_1.png", 700, 255, 0.4, 0.6);
+  addBackgroundObject("img/background.png", 1535, 0, 0.4, 1);
 
-  addBackgroundObject("img/bg_elem_2.png", 1100, 260, 0.3, 0.2);
+  addBackgroundObject("img/background.png", 3070, 0, 0.4, 1);
 
-  addBackgroundObject("img/bg_elem_1.png", 1400, 195, 0.6, 0.4);
+  addBackgroundObject("img/background.png", 4605, 0, 0.4, 1);
 
-  addBackgroundObject("img/bg_elem_2.png", 1650, 120, 0.6, 0.5);
+  addBackgroundObject("img/background.png", 6140, 0, 0.4, 1);
 
-  addBackgroundObject("img/bg_elem_1.png", 1850, 255, 0.4, 0.6);
+  addBackgroundObject("img/background.png", 7675, 0, 0.4, 1);
 
-  addBackgroundObject("img/bg_elem_2.png", 2100, 260, 0.3, 0.2);
+  addBackgroundObject("img/background.png", 9210, 0, 0.4, 1);
 
-  addBackgroundObject("img/bg_elem_1.png", 2400, 195, 0.6, 0.4);
+  addBackgroundObject("img/background.png", 10745, 0, 0.4, 1);
 
-  addBackgroundObject("img/bg_elem_2.png", 2750, 120, 0.6, 0.5);
 
-  addBackgroundObject("img/bg_elem_1.png", 3050, 255, 0.4, 0.6);
 
-  addBackgroundObject("img/bg_elem_2.png", 3400, 260, 0.3, 0.2);
+ // addBackgroundObject("img/bg_elem_2.png", 450, 120, 0.6, 0.5);
 
-  addBackgroundObject("img/bg_elem_1.png", 3900, 195, 0.6, 0.4);
+ // addBackgroundObject("img/bg_elem_1.png", 700, 255, 0.4, 0.6);
 
-  addBackgroundObject("img/bg_elem_2.png", 4350, 120, 0.6, 0.5);
+ // addBackgroundObject("img/bg_elem_2.png", 1100, 260, 0.3, 0.2);
 
-  addBackgroundObject("img/bg_elem_1.png", 4650, 255, 0.4, 0.6);
+ // addBackgroundObject("img/bg_elem_1.png", 1400, 195, 0.6, 0.4);
 
-  addBackgroundObject("img/bg_elem_2.png", 5000, 260, 0.3, 0.2);
+ // addBackgroundObject("img/bg_elem_2.png", 1650, 120, 0.6, 0.5);
+
+ // addBackgroundObject("img/bg_elem_1.png", 1850, 255, 0.4, 0.6);
+
+ // addBackgroundObject("img/bg_elem_2.png", 2100, 260, 0.3, 0.2);
+
+ // addBackgroundObject("img/bg_elem_1.png", 2400, 195, 0.6, 0.4);
+
+ // addBackgroundObject("img/bg_elem_2.png", 2750, 120, 0.6, 0.5);
+
+ // addBackgroundObject("img/bg_elem_1.png", 3050, 255, 0.4, 0.6);
+
+ // addBackgroundObject("img/bg_elem_2.png", 3400, 260, 0.3, 0.2);
+
+ // addBackgroundObject("img/bg_elem_1.png", 3900, 195, 0.6, 0.4);
+
+ // addBackgroundObject("img/bg_elem_2.png", 4350, 120, 0.6, 0.5);
+
+ // addBackgroundObject("img/bg_elem_1.png", 4650, 255, 0.4, 0.6);
+
+ // addBackgroundObject("img/bg_elem_2.png", 5000, 260, 0.3, 0.2);
 
   // Draw Ground
   ctx.fillStyle = "#FFE699";
 
   ctx.fillRect(0, 375, canvas.width, canvas.height - 375);
 
-  for (let i = 0; i < 10; i = i + 1) {
+  for (let i = 0; i < 35; i = i + 1) {
     addBackgroundObject("img/sand.png", i * canvas.width, 375, 0.36, 0.5);
   }
 }
