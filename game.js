@@ -51,15 +51,27 @@ let ctx;
 
 let character_x = 100;
 
-let character_y = 95;
+let character_y = 135;
 
-let chickenyellow_x = 300;
 
-let chickenyellow_y = 350;
 
-let chickenbrown_x = 300;
+let chickenyellow_x ;
 
-let chickenbrown_y = 350;
+let chickenyellow_y ;
+
+let current_yellowchicken_index;
+
+
+
+let chickenbrown_x ;
+
+let chickenbrown_y ;
+
+let current_brownchicken_index;
+
+let live_energy = 100;
+
+
 
 let character_energy = 100;
 
@@ -69,21 +81,49 @@ let isMovingRight = false;
 
 let isMovingLeft = false;
 
+let isJumping = false;
+
+let isThrowing = false;
+
+let isHurt = false;
+
+let isSleep = false;
+
+let isDead = false;
+
+let isInactive = false;
+
 let bg_elements = 0;
 
 let lastJumpStarted = 0;
 
 let currentCharacterImage = "img/charakter_walk_1.png";
 
+let currentJumpImage = "img/charakter_jump_1.png";
+
 let currentyellowChickenImage = "img/yellow_chicken_1.png";
 
 let currentbrownChickenImage = "img/brown_chicken_1.png";
 
+let currentbossChickenImage =
+  "img/chicken_boss/chicken_boss_walk/chicken_boss_walk_1.png";
+
+let currentrotateBottleImage = "img/tabasco_rotate_1.png";
+
+let currentbrokeBottleImage = "img/tabasco_broken_1.png";
+
+let currenthurtCharakterImage = "img/charakter_hurt_1.png";
+
+let currentdeadCharakterImage = "img/charakter_hurt_1.png";
+
+let currentinactiveCharakterImage = "img/charakter_inactive_1.png";
+
+let currentsleepCharakterImage = "img/charakter_sleep_1.png";
+
+
+
+
 let characterGraphicsRight = [
-  // "img/charakter_1.png",
-  // "img/charakter_2.png",
-  // "img/charakter_3.png",
-  // "img/charakter_4.png",
 
   "img/charakter_walk_1.png",
   "img/charakter_walk_2.png",
@@ -92,13 +132,6 @@ let characterGraphicsRight = [
   "img/charakter_walk_5.png",
   "img/charakter_walk_6.png",
 ];
-
-//let characterGraphicsLeft = [
-//  "img/charakter_left_1.png",
-//  "img/charakter_left_2.png",
-//  "img/charakter_left_3.png",
-//  "img/charakter_left_4.png",
-//];
 
 
 let brownChicken = [
@@ -113,15 +146,127 @@ let yellowChicken = [
   "img/yellow_chicken_3.png",
 ];
 
+let bossChicken = [
+  "img/chicken_boss/chicken_boss_walk/chicken_boss_walk_1.png",
+  "img/chicken_boss/chicken_boss_walk/chicken_boss_walk_2.png",
+  "img/chicken_boss/chicken_boss_walk/chicken_boss_walk_3.png",
+  "img/chicken_boss/chicken_boss_walk/chicken_boss_walk_4.png",
+];
+
+
+
+let jumpCharacter = [
+ // "img/charakter_jump_1.png",
+ // "img/charakter_jump_2.png",
+ // "img/charakter_jump_3.png",
+ // "img/charakter_jump_4.png",
+  "img/charakter_jump_5.png",
+  "img/charakter_jump_6.png",
+  "img/charakter_jump_7.png",
+  "img/charakter_jump_8.png",
+  "img/charakter_jump_9.png",
+];
+
+let hurtCharakter = [
+  "img/charakter_hurt_1.png",
+  "img/charakter_hurt_2.png",
+  "img/charakter_hurt_3.png",
+];
+
+let deadCharakter = [
+  "img/charakter_dead_1.png",
+  "img/charakter_dead_2.png",
+  "img/charakter_dead_3.png",
+  "img/charakter_dead_4.png",
+  "img/charakter_dead_5.png",
+  "img/charakter_dead_6.png",
+  "img/charakter_dead_7.png",
+];
+
+
+let inactiveCharakter = [
+  "img/charakter_inactive_1.png",
+  "img/charakter_inactive_2.png",
+  "img/charakter_inactive_3.png",
+  "img/charakter_inactive_4.png",
+  "img/charakter_inactive_5.png",
+  "img/charakter_inactive_6.png",
+  "img/charakter_inactive_7.png",
+  "img/charakter_inactive_8.png",
+  "img/charakter_inactive_9.png",
+  "img/charakter_inactive_10.png",
+];
+
+
+let sleepCharakter = [
+  "img/charakter_sleep_1.png",
+  "img/charakter_sleep_2.png",
+  "img/charakter_sleep_3.png",
+  "img/charakter_sleep_4.png",
+  "img/charakter_sleep_5.png",
+  "img/charakter_sleep_6.png",
+  "img/charakter_sleep_7.png",
+  "img/charakter_sleep_8.png",
+  "img/charakter_sleep_9.png",
+  "img/charakter_sleep_10.png",
+];
+
+
+let rotateBottle = [
+"img/tabasco_rotate_1.png", 
+"img/tabasco_rotate_2.png",
+"img/tabasco_rotate_3.png",
+"img/tabasco_rotate_4.png",
+];
+
+
+let brokeBottle = [
+  "img/tabasco_broken_1.png",
+  "img/tabasco_broken_2.png",
+  "img/tabasco_broken_3.png",
+  "img/tabasco_broken_4.png",
+  "img/tabasco_broken_5.png",
+  "img/tabasco_broken_6.png",
+];
+
+
 let characterGraphicIndex = 0;
 
-let cloudOffset = 0;
+let characterJumpIndex = 0;
 
-let chickens = [];
+let yellowChickenGraphicIndex = 0;
 
-let placedBottles = [1000, 1700, 2500, 2800, 3000, 3300, 3700];
+let brownChickenGraphicIndex = 0;
 
-let collectedBottles = 50;
+let bossChickenGraphicIndex = 0;
+
+let rotateBottleIndex = 0;
+
+let brokeBottleIndex = 0;
+
+let charakterHurtIndex = 0;
+
+let charakterDeadIndex = 0;
+
+let charakterInactiveIndex = 0;
+
+let charakterSleepIndex = 0;
+
+let chickens_1 = [];
+
+let chickens_2 = [];
+
+let placedBottles = [1000, 1700, 2500, 2800, 3000, 3300,3500, 3700,3900,4200,4400];
+
+let placedCoins_x = [500,650,800,950,1100,1250, 1500,1700,1900,2100,2300,2500,2700,3000];
+
+let placedLifes_x = [400, 500, 800, 1000, 1200,1400,1800,2000,2200,2400];
+
+let placedCoins_y = [];
+
+let collectedBottles = 20;
+
+let collectedCoins = 0;
 
 let bottleThrowTime = 0;
 
@@ -139,9 +284,9 @@ let character_lost_at = 0;
 
 let JUMP_TIME = 300; // in ms
 
-let GAME_SPEED = 4;
+let GAME_SPEED = 10;
 
-let BOSS_POSITION = 5000;
+let BOSS_POSITION = 10000;
 
 let AUDIO_RUNNING = new Audio("audio/running.mp3");
 
@@ -159,7 +304,7 @@ let AUDIO_BACKGROUND_MUSIC = new Audio("audio/music.mp3");
 
 let AUDIO_WIN = new Audio("audio/win.mp3");
 
-AUDIO_BACKGROUND_MUSIC.loop = true;
+AUDIO_BACKGROUND_MUSIC.loop = false;
 
 AUDIO_BACKGROUND_MUSIC.volume = 0.2;
 
@@ -190,7 +335,6 @@ function init() {
 
   ctx = canvas.getContext("2d");
 
-  //createChickenList();
 
   checkForRunning();
 
@@ -198,27 +342,170 @@ function init() {
 
   brownChicken_move();
 
-  draw();
+  bossChicken_move();
 
-  calculateCloudOffset();
+ create_newChicken();
+
+  draw();
 
   listenForKeys();
 
-  calculateChickenPosition();
+  moveBottle();
+
+  animatedJump();
 
   calculateChickenYellowPosition();
 
   calculateChickenBrownPosition();
 
-  checkForCollision();
+  //checkForCollision();
+
+  checkForCollision_new();
+
+  
+
 }
+
+
+function checkForCollision_new(){
+  setInterval(function () {
+    for(let i = 0; i <chickens_1.length; i++){
+
+      if((chickens_1[i].chickenyellow_x - 80) < character_x && (chickens_1[i].chickenyellow_x - 10) > character_x){
+
+    if(character_y >90){
+    live_energy = live_energy - 2;
+    //isHurt = true;
+    if(charakterHurtIndex > 2){
+      isHurt = false;
+    }
+
+    
+    }
+
+    if(live_energy <0){
+
+      live_energy = 0;
+     // isHurt = false;
+     // isDead = true;
+    }
+
+    if(live_energy > 0){
+      //isDead = false;
+    }
+  }
+
+    
+    }
+
+   for (let i = 0; i < chickens_2.length; i++) {
+     if (
+        (chickens_2[i].chickenbrown_x - 80) < character_x &&
+        (chickens_2[i].chickenbrown_x + 20) > character_x
+      )
+      if(character_y >90){
+        live_energy = live_energy -2;
+        //isHurt = true
+
+        if(charakterHurtIndex > 2){
+
+          isHurt = false;
+        }
+      
+      }
+
+        if (live_energy < 0) {
+          live_energy = 0;
+          // isHurt = false;
+          // isDead = true;
+        }
+
+        if(live_energy > 0){
+          // isDead = false;
+        }
+    }
+
+ // Check Bottle
+
+  for (let i = 0; i < placedBottles.length; i++) {
+   let bottle_x = placedBottles[i] +bg_elements ;
+
+    if ((bottle_x - 60) < character_x && (bottle_x + 60) > character_x) {
+      
+        placedBottles.splice(i, 1);
+        AUDIO_BOTTLE.play();
+        collectedBottles++;
+      
+   }
+  }
+
+ for(let i = 0; i< placedLifes_x.length; i++){
+
+  let life_x = placedLifes_x[i] +bg_elements;
+
+  if((life_x - 30) < character_x && (life_x + 30) > character_x){
+
+    
+    placedLifes_x.splice(i,1);
+    if(live_energy >=0 && live_energy <90){
+    live_energy = live_energy + 10;
+}
+ }}
+
+
+ for (let i = 0; i < placedCoins_x.length; i++) {
+   let coins_x = placedCoins_x[i] + bg_elements;
+
+   if ((coins_x - 40) < character_x && (coins_x + 50) > character_x) {
+     placedCoins_x.splice(i, 1);
+     collectedCoins++;
+   }
+ }
+
+
+
+  if (
+    thrownBottle_x > BOSS_POSITION + bg_elements - 100 &&
+    thrownBottle_x < BOSS_POSITION + bg_elements + 100
+  ) {
+    if (final_boss_energy > 0) {
+      final_boss_energy = final_boss_energy - 10;
+
+      AUDIO_GLASS.play();
+    } else if (bossDefeatedAt == 0) {
+      bossDefeatedAt = new Date().getTime();
+      finishLevel();
+    }
+  }
+
+
+  }, 100);
+
+
+  //Chicken Yellow Dead
+
+  for(let i=0; i<chickens_1.length;i++){
+
+  if(thrownBottle_x > chickens_1[i].chickenyellow_x + bg_elements - 10 && thrownBottle_x < chickens_1[i].chickenyellow_x + bg_elements + 10 ){
+
+    alert("Collision!")
+  }
+}
+
+
+
+ 
+}
+
+
+
 
 function checkForCollision() {
   setInterval(function () {
     // Check chicken
 
-    for (let i = 0; i < chickens.length; i++) {
-      let chicken = chickens[i];
+    for (let i = 0; i < chickens_1.length; i++) {
+      let chicken = chickens_1[i];
 
       let chicken_x = chicken.position_x + bg_elements;
 
@@ -234,19 +521,7 @@ function checkForCollision() {
       }
     }
 
-    // Check Bottle
-
-    for (let i = 0; i < placedBottles.length; i++) {
-      let bottle_x = placedBottles[i] + bg_elements;
-
-      if (bottle_x - 40 < character_x && bottle_x + 40 > character_x) {
-        if (character_y > 210) {
-          placedBottles.splice(i, 1);
-          AUDIO_BOTTLE.play();
-          collectedBottles++;
-        }
-      }
-    }
+    
 
     // Check final boss
     if (
@@ -275,28 +550,37 @@ function finishLevel() {
   AUDIO_WIN.play();
 }
 
-function calculateChickenPosition() {
-  setInterval(function () {
-    for (let i = 0; i < chickens.length; i++) {
-      let chicken = chickens[i];
 
-      chicken.position_x = chicken.position_x - chicken.speed;
+
+
+function create_newChicken(){
+
+
+   for(let i = 300; i < 8000; i= i +500){
+  chickens_1.push(
+    {
+      chickenyellow_x: i,
+      chickenyellow_y: 370,
+      currentyellowChickenImage: "img/yellow_chicken_1.png",
+      current_yellowchicken_index: 0,
+      speed: 20 + (Math.random()*20),
     }
-  }, 50);
+    
+  );}
+
+
+  
+   for (let i = 600; i < 8000; i = i + 700) {
+     chickens_2.push({
+       chickenbrown_x: i,
+       chickenbrown_y: 360,
+       currentyellowChickenImage: "img/brown_chicken_1.png",
+       current_brownchicken_index: 0,
+       speed: 15+( Math.random() * 30) ,
+     });
+   }
+
 }
-
-//function createChickenList() {
- // chickens = [
-  //  createChicken(1, 700),
-  //];
-//}
-
-function calculateCloudOffset() {
-  setInterval(function () {
-    cloudOffset = cloudOffset + 0.25;
-  }, 50);
-}
-
 
 
 
@@ -306,43 +590,60 @@ function yellowChicken_move(){
 
   
 
-  let index = characterGraphicIndex % yellowChicken.length;
+  let index = yellowChickenGraphicIndex % yellowChicken.length;
 
-  currentChickenImage = yellowChicken[index];
+   currentyellowChickenImage = yellowChicken[index];
 
-  characterGraphicIndex = characterGraphicIndex +1;
-
-},300);
+     yellowChickenGraphicIndex = yellowChickenGraphicIndex +1;
+},400);
 
 }
+
+
+
 
 
 function brownChicken_move() {
   setInterval(function () {
-    let index = characterGraphicIndex % yellowChicken.length;
+    let index = brownChickenGraphicIndex % brownChicken.length;
 
-    currentChickenImage = brownChicken[index];
+    currentbrownChickenImage = brownChicken[index];
 
-    characterGraphicIndex = characterGraphicIndex + 1;
-  }, 300);
+    brownChickenGraphicIndex = brownChickenGraphicIndex + 1;
+  }, 400);
 }
+
+function bossChicken_move() {
+  setInterval(function () {
+    let index = bossChickenGraphicIndex % bossChicken.length;
+
+    currentbossChickenImage = bossChicken[index];
+
+    bossChickenGraphicIndex = bossChickenGraphicIndex + 1;
+  }, 400);
+}
+
+
 
 
 function yellowChicken_animated(){
 
   let base_image = new Image();
   base_image.src= currentyellowChickenImage;
-
+  
   if(base_image.complete){
+ 
+for (i = 0; i< chickens_1.length; i++){
 
-    ctx.drawImage(
-      base_image,
-      chickenyellow_x,
-      chickenyellow_y,
-      base_image.width * 0.25,
-      base_image.height * 0.25
-    );
+   ctx.drawImage(
+     base_image,
+     chickens_1[i].chickenyellow_x,
+     chickens_1[i].chickenyellow_y,
+     base_image.width * 0.25,
+     base_image.height * 0.25
+   );
   }
+}
 }
 
 
@@ -351,33 +652,83 @@ function brownChicken_animated() {
   base_image.src = currentbrownChickenImage;
 
   if (base_image.complete) {
-    ctx.drawImage(
-      base_image,
-      chickenbrown_x,
-      chickenbrown_y,
-      base_image.width * 0.25,
-      base_image.height * 0.25
-    );
+    for (i = 0; i < chickens_2.length; i++) {
+      ctx.drawImage(
+        base_image,
+        chickens_2[i].chickenbrown_x,
+        chickens_2[i].chickenbrown_y,
+        base_image.width * 0.25,
+        base_image.height * 0.25
+      );
+    }
   }
 }
 
 
-function calculateChickenYellowPosition() {
-  setInterval(function () {
-    for (let i = 0; i < yellowChicken.length; i++) {
 
-      chickenyellow_x = chickenyellow_x - 5;
-    }
-  }, 400);
+
+
+
+
+
+
+
+function calculateChickenYellowPosition() {
+ setInterval(function () {
+
+  for(i = 0; i<chickens_1.length; i++){
+  
+     chickens_1[i].chickenyellow_x = chickens_1[i].chickenyellow_x - chickens_1[i].speed;
+   }
+ }, 500);
 }
+
 
 function calculateChickenBrownPosition() {
   setInterval(function () {
-    for (let i = 0; i < yellowChicken.length; i++) {
-      chickenbrown_x = chickenbrown_x - 5;
+
+    for (i = 0; i < chickens_2.length; i++) {
+      chickens_2[i].chickenbrown_x =
+        chickens_2[i].chickenbrown_x - chickens_2[i].speed;
     }
-  }, 400);
+  }, 500);
 }
+
+function moveBottle(){
+
+  setInterval(function(){
+
+    if(isThrowing){
+      let index = rotateBottleIndex % rotateBottle.length;
+
+      currentrotateBottleImage = rotateBottle[index];
+
+      rotateBottleIndex = rotateBottleIndex + 1;
+
+    }
+
+  },200)
+}
+
+function animatedJump() {
+
+
+  setInterval(function(){
+
+  if(isJumping){
+
+         let index = characterJumpIndex % jumpCharacter.length;
+
+         currentJumpImage = jumpCharacter[index];
+
+         characterJumpIndex = characterJumpIndex + 1;
+
+
+  }
+},350)
+
+}
+
 
 
 
@@ -387,11 +738,19 @@ function checkForRunning() {
     if (isMovingRight) {
       AUDIO_RUNNING.play();
 
+      isInactive = false;
+
+      isSleep = false;
+
       let index = characterGraphicIndex % characterGraphicsRight.length;
 
       currentCharacterImage = characterGraphicsRight[index];
 
       characterGraphicIndex = characterGraphicIndex + 1;
+
+
+    
+
     }
 
     if (isMovingLeft) {
@@ -406,6 +765,12 @@ function checkForRunning() {
 
     if (!isMovingRight && !isMovingLeft) {
       AUDIO_RUNNING.pause();
+
+      isInactive = true;
+
+      setTimeout(function(){isInactive=false;
+      isSleep = true;},2000)
+      
     }
   }, 200);
 }
@@ -426,17 +791,19 @@ function draw() {
 
     brownChicken_animated();
 
-   // drawChicken();
-
     drawBottles();
 
-    requestAnimationFrame(draw);
+    drawCoins();
 
-    drawEnergyBar();
+    drawLifes();
+
+    requestAnimationFrame(draw);
 
     draw_tabascoDisplay();
 
      draw_lifeDisplay();
+
+     draw_coinDisplay();
 
     drawThrowBottle();
   }
@@ -450,7 +817,7 @@ function drawFinalScreen() {
 
    
  
-  if(character_lost_at > 0){
+  if(live_energy == 0){
     ctx.font = "50px Lexend Peta";
     
 
@@ -464,9 +831,9 @@ ctx.fillText(msg, 90, 230);
 function drawFinalBoss() {
   let chicken_x = BOSS_POSITION;
 
-  let chicken_y = 98;
+  let chicken_y = 160;
 
-  let bossImage = "img/chicken_big.png";
+  let bossImage = currentbossChickenImage;
 
   if (bossDefeatedAt > 0) {
     let timePassed = new Date().getTime() - bossDefeatedAt;
@@ -478,7 +845,7 @@ function drawFinalBoss() {
     bossImage = "img/chicken_dead.png";
   }
 
-  addBackgroundObject(bossImage, chicken_x, chicken_y, 0.45, 1);
+  addBackgroundObject(bossImage, chicken_x, chicken_y, 0.23, 1);
 
   if (bossDefeatedAt == 0) {
     ctx.globalAlpha = 0.5;
@@ -502,100 +869,171 @@ function drawThrowBottle() {
     let timePassed = new Date().getTime() - bottleThrowTime;
     let gravity = Math.pow(9.81, timePassed / 300);
 
-    thrownBottle_x = 125 + timePassed * 0.7;
+     thrownBottle_x = 150 + timePassed * 0.3;
 
     thrownBottle_y = 300 - (timePassed * 0.6 - gravity);
 
+   
+   
+
+   
+
+      
+
     let base_image = new Image();
-    base_image.src = "img/tabasco.png";
+    base_image.src = currentrotateBottleImage;
+
+    
+
+    if(thrownBottle_y > 320){
+      
+    base_image.src = currentbrokeBottleImage;
+    }
+  
+  
+
     if (base_image.complete) {
       ctx.drawImage(
         base_image,
         thrownBottle_x,
         thrownBottle_y,
-        base_image.width * 0.5,
-        base_image.height * 0.5
-      );
-    }
+        base_image.width * 0.25,
+        base_image.height * 0.25
+      );}}
+    
+  
   }
-}
+
 
 function draw_tabascoDisplay() {
   let base_image = new Image();
-  base_image.src = "img/tabasco.png";
-  if (base_image.complete) {
-    ctx.drawImage(
-      base_image,
-      0,
-      0,
-      base_image.width * 0.5,
-      base_image.height * 0.5
-    );
+  
+
+  if (collectedBottles >= 0 && collectedBottles < 10) {
+    base_image.src = "img/tabasco_0.png";
+  } else if (collectedBottles >= 10 && collectedBottles < 20) {
+    base_image.src = "img/tabasco_20.png";
+  } else if (collectedBottles >= 20 && collectedBottles < 30) {
+    base_image.src = "img/tabasco_40.png";
+  } else if (collectedBottles >= 30 && collectedBottles < 40) {
+    base_image.src = "img/tabasco_60.png";
+  } else if (collectedBottles >= 40 && collectedBottles < 50) {
+    base_image.src = "img/tabasco_80.png";
+  } else if (collectedBottles == 50) {
+    base_image.src = "img/tabasco_100.png";
   }
-
-  ctx.font = "20px Lexend Peta";
-
-  ctx.fillText("x" + collectedBottles, 55, 50);
-}
-
-
-function draw_lifeDisplay() {
-  let base_image = new Image();
-  base_image.src = "img/life_100.png";
   if (base_image.complete) {
     ctx.drawImage(
       base_image,
       0,
-      60,
+      0,
       base_image.width * 0.3,
       base_image.height * 0.3
     );
   }
 
+   ctx.font = '20px Lexend Peta';
+   ctx.fillText('x' + collectedBottles, 20, 60);
+}
+
+function draw_coinDisplay() {
+  let base_image = new Image();
+
+  if (collectedCoins >= 0 && collectedCoins < 10) {
+    base_image.src = "img/coin_0.png";
+  } else if (collectedCoins >= 10 && collectedCoins < 20) {
+    base_image.src = "img/coin_20.png";
+  } else if (collectedCoins >= 20 && collectedCoins < 30) {
+    base_image.src = "img/coin_40.png";
+  } else if (collectedCoins >= 30 && collectedCoins < 40) {
+    base_image.src = "img/coin_60.png";
+  } else if (collectedCoins >= 40 && collectedCoins < 50) {
+    base_image.src = "img/coin_80.png";
+  } else if (collectedCoins == 50) {
+    base_image.src = "img/coin_100.png";
+  }
+  
+  if (base_image.complete) {
+    ctx.drawImage(
+      base_image,
+      200,
+      0,
+      base_image.width * 0.3,
+      base_image.height * 0.3
+    );
+  }
+
+   ctx.font = "20px Lexend Peta";
+   ctx.fillText("x" + collectedCoins, 220, 60);
+}
+
+
+
+
+
+function draw_lifeDisplay() {
+  let base_image = new Image();
+
+
+   if (live_energy <= 100 && live_energy >80 ) {
+     base_image.src = "img/life_100.png";
+   } else if (live_energy <= 80 && live_energy >60) {
+     base_image.src = "img/life_80.png";
+   } else if (live_energy <= 60 && live_energy >40) {
+     base_image.src = "img/life_60.png";
+   } else if (live_energy <= 40 && live_energy >20) {
+     base_image.src = "img/life_40.png";
+   } else if (live_energy <= 20 && live_energy >0) {
+     base_image.src = "img/life_20.png";
+   } else if (live_energy == 0) {
+     base_image.src = "img/life_0.png";
+   }
+  if (base_image.complete) {
+    ctx.drawImage(
+      base_image,
+      400,
+      0,
+      base_image.width * 0.3,
+      base_image.height * 0.3
+    );
+    
+  }
+
+  ctx.font = "20px Lexend Peta ";
+  ctx.fillText(live_energy+"%", 420, 60);
+
+  
+
 
 }
+
+
 
 function drawBottles() {
   for (let i = 0; i < placedBottles.length; i++) {
     let bottle_x = placedBottles[i];
-    addBackgroundObject("img/tabasco.png", bottle_x, 330, 0.5, 1);
+    addBackgroundObject("img/tabasco.png", bottle_x, 350, 0.5, 1);
   }
 }
 
-function drawEnergyBar() {
-  ctx.globalAlpha = 0.5;
-  ctx.fillStyle = "blue";
-  ctx.fillRect(500, 15, 2 * character_energy, 30);
-  ctx.globalAlpha = 0.2;
 
-  ctx.fillStyle = "black";
-  ctx.fillRect(495, 10, 210, 40);
-  ctx.globalAlpha = 1;
-}
-
-function drawChicken() {
-  for (i = 0; i < chickens.length; i = i + 1) {
-    let chicken = chickens[i];
-
-    addBackgroundObject(
-      chicken.img,
-      chicken.position_x,
-      chicken.position_y,
-      chicken.scale,
-      1
-    );
+function drawCoins() {
+  for (let i = 0; i < placedCoins_x.length; i++) {
+    let coin_x = placedCoins_x[i];
+    addBackgroundObject("img/coin_small.png", coin_x, 290, 0.4, 1);
   }
 }
 
-//function createChicken(type, position_x) {
-//  return {
- //   img: "img/chicken_1_" + type + ".png",
-  //  position_x: position_x,
-  //  position_y: 290,
-  //  scale: 0.5,
-  //  speed: Math.random() * 5,
-  //};
-//}
+function drawLifes() {
+  for (let i = 0; i < placedLifes_x.length; i++) {
+    let life_x = placedLifes_x[i];
+    addBackgroundObject("img/life_symbol.png", life_x, 290, 0.4, 1);
+  }
+}
+
+
+
+
 
 function updateCharacter() {
   let base_image = new Image();
@@ -603,13 +1041,79 @@ function updateCharacter() {
 
   let timePassedSinceJump = new Date().getTime() - lastJumpStarted;
 
-  if (timePassedSinceJump < JUMP_TIME) {
-    character_y = character_y - 10;
+
+  if(isHurt == true){
+    base_image.src = currenthurtCharakterImage;
+
+     setInterval(function(){
+
+      let index = charakterHurtIndex % hurtCharakter.length;
+
+      currenthurtCharakterImage = hurtCharakter[index];
+
+     charakterHurtIndex =charakterHurtIndex + 1;
+
+      if(charakterHurtIndex >2){
+        charakterHurtIndex = 0;
+      }
+
+
+    },500)
+
+
+  
+  }
+
+  else if (isDead == true) {
+    base_image.src = currentdeadCharakterImage;
+
+    setInterval(function () {
+      let index = charakterDeadIndex % deadCharakter.length;
+
+      currentdeadCharakterImage = deadCharakter[index];
+
+      charakterDeadIndex = charakterDeadIndex + 1;
+    }, 600);
+
+  
+
+  } else if (isInactive == true) {
+    base_image.src = currentinactiveCharakterImage;
+
+    setInterval(function () {
+      let index = charakterInactiveIndex % inactiveCharakter.length;
+
+      currentinactiveCharakterImage = inactiveCharakter[index];
+
+      charakterInactiveIndex = charakterInactiveIndex + 1;
+    }, 500);
+
+    
+  
+
+  } else if (isSleep == true) {
+    base_image.src = currentsleepCharakterImage;
+
+    setInterval(function () {
+      let index = charakterSleepIndex % sleepCharakter.length;
+
+      currentsleepCharakterImage = sleepCharakter[index];
+
+      charakterSleepIndex++;
+    }, 500);
+
+    
+  } 
+  
+  else if (timePassedSinceJump < JUMP_TIME) {
+    character_y = character_y - 12.5;
   } else {
     // Check falling
 
-    if (character_y < 105) {
-      character_y = character_y + 5;
+    if (character_y < 135) {
+      character_y = character_y + 2.5;
+
+      base_image.src = currentJumpImage;
     }
   }
 
@@ -631,31 +1135,8 @@ function drawBackground() {
 
   drawGround();
 
-  // Draw Clouds
 
- // addBackgroundObject("img/cloud1.png", 100 - cloudOffset, 20, 0.8, 1);
-
- // addBackgroundObject("img/cloud2.png", 500 - cloudOffset, 20, 0.6, 1);
-
- // addBackgroundObject("img/cloud1.png", 800 - cloudOffset, 20, 1, 1);
-
- // addBackgroundObject("img/cloud2.png", 1300 - cloudOffset, 20, 0.6, 1);
-
- // addBackgroundObject("img/cloud1.png", 1800 - cloudOffset, 20, 1, 1);
-
- // addBackgroundObject("img/cloud2.png", 2300 - cloudOffset, 20, 0.6, 1);
-
- // addBackgroundObject("img/cloud1.png", 2800 - cloudOffset, 20, 1, 1);
-
- // addBackgroundObject("img/cloud2.png", 3500 - cloudOffset, 20, 0.6, 1);
-
- // addBackgroundObject("img/cloud1.png", 3900 - cloudOffset, 20, 1, 1);
-
- // addBackgroundObject("img/cloud2.png", 4300 - cloudOffset, 20, 0.6, 1);
-
- // addBackgroundObject("img/cloud1.png", 4700 - cloudOffset, 20, 1, 1);
-
- // addBackgroundObject("img/cloud2.png", 5200 - cloudOffset, 20, 0.6, 1);
+ 
 }
 
 function drawGround() {
@@ -668,62 +1149,23 @@ function drawGround() {
   }
 
 
-  addBackgroundObject("img/background.png", 0, 0, 0.4, 1);
+  addBackgroundObject("img/background.png", 0, 0, 0.45, 1);
 
-  addBackgroundObject("img/background.png", 1535, 0, 0.4, 1);
+  addBackgroundObject("img/background.png", 1725, 0, 0.45, 1);
 
-  addBackgroundObject("img/background.png", 3070, 0, 0.4, 1);
+  addBackgroundObject("img/background.png", 3450, 0, 0.45, 1);
 
-  addBackgroundObject("img/background.png", 4605, 0, 0.4, 1);
+  addBackgroundObject("img/background.png", 5175, 0, 0.45, 1);
 
-  addBackgroundObject("img/background.png", 6140, 0, 0.4, 1);
+  addBackgroundObject("img/background.png", 6900, 0, 0.45, 1);
 
-  addBackgroundObject("img/background.png", 7675, 0, 0.4, 1);
+  addBackgroundObject("img/background.png", 8625, 0, 0.45, 1);
 
-  addBackgroundObject("img/background.png", 9210, 0, 0.4, 1);
+  addBackgroundObject("img/background.png", 10350, 0, 0.45, 1);
 
-  addBackgroundObject("img/background.png", 10745, 0, 0.4, 1);
+  addBackgroundObject("img/background.png", 12075, 0, 0.45, 1);
 
-
-
- // addBackgroundObject("img/bg_elem_2.png", 450, 120, 0.6, 0.5);
-
- // addBackgroundObject("img/bg_elem_1.png", 700, 255, 0.4, 0.6);
-
- // addBackgroundObject("img/bg_elem_2.png", 1100, 260, 0.3, 0.2);
-
- // addBackgroundObject("img/bg_elem_1.png", 1400, 195, 0.6, 0.4);
-
- // addBackgroundObject("img/bg_elem_2.png", 1650, 120, 0.6, 0.5);
-
- // addBackgroundObject("img/bg_elem_1.png", 1850, 255, 0.4, 0.6);
-
- // addBackgroundObject("img/bg_elem_2.png", 2100, 260, 0.3, 0.2);
-
- // addBackgroundObject("img/bg_elem_1.png", 2400, 195, 0.6, 0.4);
-
- // addBackgroundObject("img/bg_elem_2.png", 2750, 120, 0.6, 0.5);
-
- // addBackgroundObject("img/bg_elem_1.png", 3050, 255, 0.4, 0.6);
-
- // addBackgroundObject("img/bg_elem_2.png", 3400, 260, 0.3, 0.2);
-
- // addBackgroundObject("img/bg_elem_1.png", 3900, 195, 0.6, 0.4);
-
- // addBackgroundObject("img/bg_elem_2.png", 4350, 120, 0.6, 0.5);
-
- // addBackgroundObject("img/bg_elem_1.png", 4650, 255, 0.4, 0.6);
-
- // addBackgroundObject("img/bg_elem_2.png", 5000, 260, 0.3, 0.2);
-
-  // Draw Ground
-  ctx.fillStyle = "#FFE699";
-
-  ctx.fillRect(0, 375, canvas.width, canvas.height - 375);
-
-  for (let i = 0; i < 35; i = i + 1) {
-    addBackgroundObject("img/sand.png", i * canvas.width, 375, 0.36, 0.5);
-  }
+ 
 }
 
 function addBackgroundObject(src, offsetX, offsetY, scale, opacity) {
@@ -742,7 +1184,7 @@ function addBackgroundObject(src, offsetX, offsetY, scale, opacity) {
       base_image.height * scale
     );
   }
-  ctx.globalAlpha = 1;
+  ctx.globalAlpha = 1; 
 }
 
 function listenForKeys() {
@@ -760,6 +1202,7 @@ function listenForKeys() {
     }
 
     if (k == "d" && collectedBottles > 0) {
+      isThrowing = true;
       let timePassed = new Date().getTime() - bottleThrowTime;
 
       if (timePassed > 1000) {
@@ -769,9 +1212,17 @@ function listenForKeys() {
         bottleThrowTime = new Date().getTime();
       }
     }
+
+    //if(e.code == "Space"){
+     //  isJumping = true;
+    //}
     let timePassedSinceJump = new Date().getTime() - lastJumpStarted;
 
     if (e.code == "Space" && timePassedSinceJump > JUMP_TIME * 2) {
+      isJumping = true;
+
+    
+     
       AUDIO_JUMP.play();
 
       lastJumpStarted = new Date().getTime();
