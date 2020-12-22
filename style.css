@@ -2,3 +2,99 @@ body {
     font-family: 'Lexend Peta', sans-serif;
     background-color: #cccccc;
 }
+
+.body-fullscreen {
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    background-color: black;
+}
+
+canvas {
+    padding-left: 200px;
+    padding-top: 20px;
+}
+
+.fullscreen {
+    width: 100%;
+    height: 100%;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+h1 {
+    text-align: center;
+}
+
+button {
+    box-sizing: border-box;
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid red;
+    border-radius: 0.6em;
+    color: red;
+    cursor: pointer;
+    display: flex;
+    align-self: center;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+    margin: 20px;
+    padding: 1.2em 2.8em;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    position: absolute;
+    bottom: -15px;
+    left: 550px;
+}
+
+.third {
+    border-color: yellow;
+    color: #fff;
+    box-shadow: 0 0 40px 40px yellow inset, 0 0 0 0 yellow;
+    transition: all 150ms ease-in-out;
+}
+
+.third:hover {
+    box-shadow: 0 0 10px 0 yellow inset, 0 0 10px 4px yellow;
+}
+
+.d-none {
+    display: none;
+}
+
+.game-description {
+    font-size: 25px;
+    position: absolute;
+    top: 250px;
+    left: 400px;
+    display: table;
+    margin: 0 auto;
+    text-align: center;
+    background-color: rgba(255, 255, 0, 0.733);
+}
+
+.left-side {
+    left: 200px;
+}
+
+.right-side {
+    left: 780px;
+}
+
+img {
+    position: absolute;
+    top: 545px;
+    left: 1030px;
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+}
+
+img:hover {
+    cursor: pointer;
+}

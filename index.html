@@ -7,12 +7,41 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Peta&display=swap" rel="stylesheet">
     <script src="game.js"></script>
+    <script src="gameMenu.js"></script>
 </head>
-<body onload="init()">
+<body id="body" onload="init()">
 
-    <h1>El Pollo Loco</h1>
+    <h1 id="h1">El Pollo Loco</h1>
 
-    <canvas id="canvas" width="720" height="480"></canvas>
+    <canvas  id="canvas" width="860" height="480" >
+
+
+        
+
+    
+
+    </canvas>
+     
+    <button onclick="gameMode()"  id="start-btn" class="third">Start Game</button>
+
+    <button onclick="startNormal()" id="normalmode-btn" class="third left-side d-none">normal mode</button>
+
+    <button onclick="fullscreenGame()" id="fullscreenmode-btn" class="third right-side d-none">fullscreen mode</button>
+
+    <button onclick="restart()" id="restart-btn" class="third d-none">Restart</button>
+
+   
+
+
+
+   <div  class="game-description">
+    
+        <p class="d-none" id="description1" >d button = throw bottle</p>
+        <p class="d-none" id="description2">left arrow = move Left</p>
+        <p class="d-none" id="description3">right arrow = move Right</p>
+        <p class="d-none" id="description4">space button = Jump</p>
+    </div>
+    
     
 </body>
 </html>

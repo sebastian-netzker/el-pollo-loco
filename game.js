@@ -1,5 +1,3 @@
-
-
 const IMG1 = "./img/bg_elem_1.png";
 const IMG2 = "./img/bg_elem_2.png";
 const IMG3 = "./img/charakter_1.png";
@@ -44,7 +42,6 @@ let imagePaths = [
   IMG20,
 ];
 
-
 let canvas;
 
 let ctx;
@@ -53,25 +50,23 @@ let character_x = 100;
 
 let character_y = 135;
 
+let chickenyellow_x;
 
-
-let chickenyellow_x ;
-
-let chickenyellow_y ;
+let chickenyellow_y;
 
 let current_yellowchicken_index;
 
+let chickenbrown_x;
 
-
-let chickenbrown_x ;
-
-let chickenbrown_y ;
+let chickenbrown_y;
 
 let current_brownchicken_index;
 
 let live_energy = 100;
 
+let start_screen = true;
 
+let game_over = false;
 
 let character_energy = 100;
 
@@ -120,11 +115,7 @@ let currentinactiveCharakterImage = "img/charakter_inactive_1.png";
 
 let currentsleepCharakterImage = "img/charakter_sleep_1.png";
 
-
-
-
 let characterGraphicsRight = [
-
   "img/charakter_walk_1.png",
   "img/charakter_walk_2.png",
   "img/charakter_walk_3.png",
@@ -133,12 +124,11 @@ let characterGraphicsRight = [
   "img/charakter_walk_6.png",
 ];
 
-
 let brownChicken = [
-"img/brown_chicken_1.png",
-"img/brown_chicken_2.png",
-"img/brown_chicken_3.png",];
-
+  "img/brown_chicken_1.png",
+  "img/brown_chicken_2.png",
+  "img/brown_chicken_3.png",
+];
 
 let yellowChicken = [
   "img/yellow_chicken_1.png",
@@ -153,13 +143,11 @@ let bossChicken = [
   "img/chicken_boss/chicken_boss_walk/chicken_boss_walk_4.png",
 ];
 
-
-
 let jumpCharacter = [
- // "img/charakter_jump_1.png",
- // "img/charakter_jump_2.png",
- // "img/charakter_jump_3.png",
- // "img/charakter_jump_4.png",
+  // "img/charakter_jump_1.png",
+  // "img/charakter_jump_2.png",
+  // "img/charakter_jump_3.png",
+  // "img/charakter_jump_4.png",
   "img/charakter_jump_5.png",
   "img/charakter_jump_6.png",
   "img/charakter_jump_7.png",
@@ -183,7 +171,6 @@ let deadCharakter = [
   "img/charakter_dead_7.png",
 ];
 
-
 let inactiveCharakter = [
   "img/charakter_inactive_1.png",
   "img/charakter_inactive_2.png",
@@ -196,7 +183,6 @@ let inactiveCharakter = [
   "img/charakter_inactive_9.png",
   "img/charakter_inactive_10.png",
 ];
-
 
 let sleepCharakter = [
   "img/charakter_sleep_1.png",
@@ -211,14 +197,12 @@ let sleepCharakter = [
   "img/charakter_sleep_10.png",
 ];
 
-
 let rotateBottle = [
-"img/tabasco_rotate_1.png", 
-"img/tabasco_rotate_2.png",
-"img/tabasco_rotate_3.png",
-"img/tabasco_rotate_4.png",
+  "img/tabasco_rotate_1.png",
+  "img/tabasco_rotate_2.png",
+  "img/tabasco_rotate_3.png",
+  "img/tabasco_rotate_4.png",
 ];
-
 
 let brokeBottle = [
   "img/tabasco_broken_1.png",
@@ -228,7 +212,6 @@ let brokeBottle = [
   "img/tabasco_broken_5.png",
   "img/tabasco_broken_6.png",
 ];
-
 
 let characterGraphicIndex = 0;
 
@@ -256,11 +239,38 @@ let chickens_1 = [];
 
 let chickens_2 = [];
 
-let placedBottles = [1000, 1700, 2500, 2800, 3000, 3300,3500, 3700,3900,4200,4400];
+let placedBottles = [
+  1000,
+  1700,
+  2500,
+  2800,
+  3000,
+  3300,
+  3500,
+  3700,
+  3900,
+  4200,
+  4400,
+];
 
-let placedCoins_x = [500,650,800,950,1100,1250, 1500,1700,1900,2100,2300,2500,2700,3000];
+let placedCoins_x = [
+  500,
+  650,
+  800,
+  950,
+  1100,
+  1250,
+  1500,
+  1700,
+  1900,
+  2100,
+  2300,
+  2500,
+  2700,
+  3000,
+];
 
-let placedLifes_x = [400, 500, 800, 1000, 1200,1400,1800,2000,2200,2400];
+let placedLifes_x = [400, 500, 800, 1000, 1200, 1400, 1800, 2000, 2200, 2400];
 
 let placedCoins_y = [];
 
@@ -308,25 +318,17 @@ AUDIO_BACKGROUND_MUSIC.loop = false;
 
 AUDIO_BACKGROUND_MUSIC.volume = 0.2;
 
-
-
 //function preloadImages(){
 
-  //for(let i = 0; i < imagePaths.length; i++) {
+//for(let i = 0; i < imagePaths.length; i++) {
 
-    //let image = new Image();
+//let image = new Image();
 
-    //image.src = imagePaths[i];
+//image.src = imagePaths[i];
 
-    //imagePaths.push(image);
+//imagePaths.push(image);
 
-
-
-  //}
-
-
-
-
+//}
 
 //}
 
@@ -334,7 +336,6 @@ function init() {
   canvas = document.getElementById("canvas");
 
   ctx = canvas.getContext("2d");
-
 
   checkForRunning();
 
@@ -344,7 +345,7 @@ function init() {
 
   bossChicken_move();
 
- create_newChicken();
+  create_newChicken();
 
   draw();
 
@@ -358,61 +359,63 @@ function init() {
 
   calculateChickenBrownPosition();
 
-  //checkForCollision();
-
   checkForCollision_new();
-
-  
-
 }
 
+/**
+ * This function checks whether the figure collides with a yellow chicken
+ */
 
-function checkForCollision_new(){
+function checkChickenYellow() {
   setInterval(function () {
-    for(let i = 0; i <chickens_1.length; i++){
+    for (let i = 0; i < chickens_1.length; i++) {
+      if (
+        chickens_1[i].chickenyellow_x - 80 < character_x &&
+        chickens_1[i].chickenyellow_x - 10 > character_x
+      ) {
+        if (character_y > 90) {
+          live_energy = live_energy - 2;
+          //isHurt = true;
 
-      if((chickens_1[i].chickenyellow_x - 80) < character_x && (chickens_1[i].chickenyellow_x - 10) > character_x){
-
-    if(character_y >90){
-    live_energy = live_energy - 2;
-    //isHurt = true;
-    if(charakterHurtIndex > 2){
-      isHurt = false;
-    }
-
-    
-    }
-
-    if(live_energy <0){
-
-      live_energy = 0;
-     // isHurt = false;
-     // isDead = true;
-    }
-
-    if(live_energy > 0){
-      //isDead = false;
-    }
-  }
-
-    
-    }
-
-   for (let i = 0; i < chickens_2.length; i++) {
-     if (
-        (chickens_2[i].chickenbrown_x - 80) < character_x &&
-        (chickens_2[i].chickenbrown_x + 20) > character_x
-      )
-      if(character_y >90){
-        live_energy = live_energy -2;
-        //isHurt = true
-
-        if(charakterHurtIndex > 2){
-
-          isHurt = false;
+          if (charakterHurtIndex > 2) {
+            isHurt = false;
+          }
         }
-      
+
+        if (live_energy < 0) {
+          live_energy = 0;
+          game_over = true;
+          // isHurt = false;
+          // isDead = true;
+        }
+
+        if (live_energy > 0) {
+          //isDead = false;
+        }
       }
+    }
+  }, 100);
+}
+
+/**
+ * This function checks whether the figure collides with a brown chicken
+ */
+
+function checkChickenBrown() {
+  setInterval(function () {
+    for (let i = 0; i < chickens_2.length; i++) {
+      if (
+        chickens_2[i].chickenbrown_x - 80 < character_x &&
+        chickens_2[i].chickenbrown_x + 20 > character_x
+      ) {
+        if (character_y > 90) {
+          live_energy = live_energy - 2;
+          //isHurt = true;
+
+          if (charakterHurtIndex > 2) {
+            isHurt = false;
+          }
+        }
 
         if (live_energy < 0) {
           live_energy = 0;
@@ -420,110 +423,74 @@ function checkForCollision_new(){
           // isDead = true;
         }
 
-        if(live_energy > 0){
-          // isDead = false;
-        }
-    }
-
- // Check Bottle
-
-  for (let i = 0; i < placedBottles.length; i++) {
-   let bottle_x = placedBottles[i] +bg_elements ;
-
-    if ((bottle_x - 60) < character_x && (bottle_x + 60) > character_x) {
-      
-        placedBottles.splice(i, 1);
-        AUDIO_BOTTLE.play();
-        collectedBottles++;
-      
-   }
-  }
-
- for(let i = 0; i< placedLifes_x.length; i++){
-
-  let life_x = placedLifes_x[i] +bg_elements;
-
-  if((life_x - 30) < character_x && (life_x + 30) > character_x){
-
-    
-    placedLifes_x.splice(i,1);
-    if(live_energy >=0 && live_energy <90){
-    live_energy = live_energy + 10;
-}
- }}
-
-
- for (let i = 0; i < placedCoins_x.length; i++) {
-   let coins_x = placedCoins_x[i] + bg_elements;
-
-   if ((coins_x - 40) < character_x && (coins_x + 50) > character_x) {
-     placedCoins_x.splice(i, 1);
-     collectedCoins++;
-   }
- }
-
-
-
-  if (
-    thrownBottle_x > BOSS_POSITION + bg_elements - 100 &&
-    thrownBottle_x < BOSS_POSITION + bg_elements + 100
-  ) {
-    if (final_boss_energy > 0) {
-      final_boss_energy = final_boss_energy - 10;
-
-      AUDIO_GLASS.play();
-    } else if (bossDefeatedAt == 0) {
-      bossDefeatedAt = new Date().getTime();
-      finishLevel();
-    }
-  }
-
-
-  }, 100);
-
-
-  //Chicken Yellow Dead
-
-  for(let i=0; i<chickens_1.length;i++){
-
-  if(thrownBottle_x > chickens_1[i].chickenyellow_x + bg_elements - 10 && thrownBottle_x < chickens_1[i].chickenyellow_x + bg_elements + 10 ){
-
-    alert("Collision!")
-  }
-}
-
-
-
- 
-}
-
-
-
-
-function checkForCollision() {
-  setInterval(function () {
-    // Check chicken
-
-    for (let i = 0; i < chickens_1.length; i++) {
-      let chicken = chickens_1[i];
-
-      let chicken_x = chicken.position_x + bg_elements;
-
-      if (chicken_x - 40 < character_x && chicken_x + 40 > character_x) {
-        if (character_y > 210) {
-          if(character_energy >0){
-          character_energy -= 10;
-        } else {
-          character_lost_at = new Date().getTime();
-          game_finished = true;
-        }
+        if (live_energy > 0) {
+          //isDead = false;
         }
       }
     }
+  }, 100);
+}
 
-    
+/**
+ * This function checks whether the figure collides with a bottle
+ */
 
-    // Check final boss
+function checkBottle() {
+  setInterval(function () {
+    for (let i = 0; i < placedBottles.length; i++) {
+      let bottle_x = placedBottles[i] + bg_elements;
+
+      if (bottle_x - 60 < character_x && bottle_x + 60 > character_x) {
+        placedBottles.splice(i, 1);
+        AUDIO_BOTTLE.play();
+        collectedBottles++;
+      }
+    }
+  }, 100);
+}
+
+/**
+ * This function checks whether the figure collides with a Life
+ */
+
+function checkLife() {
+  setInterval(function () {
+    for (let i = 0; i < placedLifes_x.length; i++) {
+      let life_x = placedLifes_x[i] + bg_elements;
+
+      if (life_x - 30 < character_x && life_x + 30 > character_x) {
+        placedLifes_x.splice(i, 1);
+        if (live_energy >= 0 && live_energy < 90) {
+          live_energy = live_energy + 10;
+        }
+      }
+    }
+  }, 100);
+}
+
+/**
+ * This function checks whether the figure collides with a Coin
+ */
+
+function checkCoins() {
+  setInterval(function () {
+    for (let i = 0; i < placedCoins_x.length; i++) {
+      let coins_x = placedCoins_x[i] + bg_elements;
+
+      if (coins_x - 40 < character_x && coins_x + 50 > character_x) {
+        placedCoins_x.splice(i, 1);
+        collectedCoins++;
+      }
+    }
+  }, 100);
+}
+
+/**
+ * This function checks whether the figure collides with the boss Chicken
+ */
+
+function checkBoss() {
+  setInterval(function () {
     if (
       thrownBottle_x > BOSS_POSITION + bg_elements - 100 &&
       thrownBottle_x < BOSS_POSITION + bg_elements + 100
@@ -540,6 +507,23 @@ function checkForCollision() {
   }, 100);
 }
 
+/**
+ * This function checks whether the figure collides with another element
+ */
+function checkForCollision_new() {
+  checkChickenYellow();
+
+  checkChickenBrown();
+
+  checkBottle();
+
+  checkLife();
+
+  checkCoins();
+
+  checkBoss();
+}
+
 function finishLevel() {
   AUDIO_CHICKEN.play();
 
@@ -550,58 +534,49 @@ function finishLevel() {
   AUDIO_WIN.play();
 }
 
+/**
+ * This function create new  brown and yellow chicken
+ */
 
-
-
-function create_newChicken(){
-
-
-   for(let i = 300; i < 8000; i= i +500){
-  chickens_1.push(
-    {
+function create_newChicken() {
+  for (let i = 300; i < 8000; i = i + 500) {
+    chickens_1.push({
       chickenyellow_x: i,
       chickenyellow_y: 370,
       currentyellowChickenImage: "img/yellow_chicken_1.png",
       current_yellowchicken_index: 0,
-      speed: 20 + (Math.random()*20),
-    }
-    
-  );}
+      speed: 20 + Math.random() * 20,
+    });
+  }
 
-
-  
-   for (let i = 600; i < 8000; i = i + 700) {
-     chickens_2.push({
-       chickenbrown_x: i,
-       chickenbrown_y: 360,
-       currentyellowChickenImage: "img/brown_chicken_1.png",
-       current_brownchicken_index: 0,
-       speed: 15+( Math.random() * 30) ,
-     });
-   }
-
+  for (let i = 600; i < 8000; i = i + 700) {
+    chickens_2.push({
+      chickenbrown_x: i,
+      chickenbrown_y: 360,
+      currentyellowChickenImage: "img/brown_chicken_1.png",
+      current_brownchicken_index: 0,
+      speed: 15 + Math.random() * 30,
+    });
+  }
 }
 
+/**
+ * This function change the picture for the yellow chicken so that it moves
+ */
 
-
-function yellowChicken_move(){
-
+function yellowChicken_move() {
   setInterval(function () {
+    let index = yellowChickenGraphicIndex % yellowChicken.length;
 
-  
+    currentyellowChickenImage = yellowChicken[index];
 
-  let index = yellowChickenGraphicIndex % yellowChicken.length;
-
-   currentyellowChickenImage = yellowChicken[index];
-
-     yellowChickenGraphicIndex = yellowChickenGraphicIndex +1;
-},400);
-
+    yellowChickenGraphicIndex = yellowChickenGraphicIndex + 1;
+  }, 400);
 }
 
-
-
-
+/**
+ * This function change the picture for the brown chicken so that it moves
+ */
 
 function brownChicken_move() {
   setInterval(function () {
@@ -613,6 +588,10 @@ function brownChicken_move() {
   }, 400);
 }
 
+/**
+ * This function change the picture for the boss chicken so that it moves
+ */
+
 function bossChicken_move() {
   setInterval(function () {
     let index = bossChickenGraphicIndex % bossChicken.length;
@@ -623,29 +602,22 @@ function bossChicken_move() {
   }, 400);
 }
 
-
-
-
-function yellowChicken_animated(){
-
+function yellowChicken_animated() {
   let base_image = new Image();
-  base_image.src= currentyellowChickenImage;
-  
-  if(base_image.complete){
- 
-for (i = 0; i< chickens_1.length; i++){
+  base_image.src = currentyellowChickenImage;
 
-   ctx.drawImage(
-     base_image,
-     chickens_1[i].chickenyellow_x,
-     chickens_1[i].chickenyellow_y,
-     base_image.width * 0.25,
-     base_image.height * 0.25
-   );
+  if (base_image.complete) {
+    for (i = 0; i < chickens_1.length; i++) {
+      ctx.drawImage(
+        base_image,
+        chickens_1[i].chickenyellow_x,
+        chickens_1[i].chickenyellow_y,
+        base_image.width * 0.25,
+        base_image.height * 0.25
+      );
+    }
   }
 }
-}
-
 
 function brownChicken_animated() {
   let base_image = new Image();
@@ -665,28 +637,26 @@ function brownChicken_animated() {
 }
 
 
-
-
-
-
-
-
-
+/**
+ * This function calculate the positon from the yellow chicken 
+ */
 
 function calculateChickenYellowPosition() {
- setInterval(function () {
-
-  for(i = 0; i<chickens_1.length; i++){
-  
-     chickens_1[i].chickenyellow_x = chickens_1[i].chickenyellow_x - chickens_1[i].speed;
-   }
- }, 500);
+  setInterval(function () {
+    for (i = 0; i < chickens_1.length; i++) {
+      chickens_1[i].chickenyellow_x =
+        chickens_1[i].chickenyellow_x - chickens_1[i].speed;
+    }
+  }, 500);
 }
 
 
+/**
+ * This function calculate the position from the brown chicken
+ */
+
 function calculateChickenBrownPosition() {
   setInterval(function () {
-
     for (i = 0; i < chickens_2.length; i++) {
       chickens_2[i].chickenbrown_x =
         chickens_2[i].chickenbrown_x - chickens_2[i].speed;
@@ -694,44 +664,42 @@ function calculateChickenBrownPosition() {
   }, 500);
 }
 
-function moveBottle(){
+/**
+ * This function change the picture for the bottle rotation so that it moves
+ */
 
-  setInterval(function(){
-
-    if(isThrowing){
+function moveBottle() {
+  setInterval(function () {
+    if (isThrowing) {
       let index = rotateBottleIndex % rotateBottle.length;
 
       currentrotateBottleImage = rotateBottle[index];
 
       rotateBottleIndex = rotateBottleIndex + 1;
-
     }
-
-  },200)
+  }, 200);
 }
+
+
+/**
+ * This function change the picture for the jump animation
+ */
 
 function animatedJump() {
+  setInterval(function () {
+    if (isJumping) {
+      let index = characterJumpIndex % jumpCharacter.length;
 
+      currentJumpImage = jumpCharacter[index];
 
-  setInterval(function(){
-
-  if(isJumping){
-
-         let index = characterJumpIndex % jumpCharacter.length;
-
-         currentJumpImage = jumpCharacter[index];
-
-         characterJumpIndex = characterJumpIndex + 1;
-
-
-  }
-},350)
-
+      characterJumpIndex = characterJumpIndex + 1;
+    }
+  }, 350);
 }
 
-
-
-
+/**
+ * This function checks whether the figure is running or not
+ */
 
 function checkForRunning() {
   setInterval(function () {
@@ -747,65 +715,55 @@ function checkForRunning() {
       currentCharacterImage = characterGraphicsRight[index];
 
       characterGraphicIndex = characterGraphicIndex + 1;
-
-
-    
-
-    }
-
-    if (isMovingLeft) {
-      AUDIO_RUNNING.play();
-
-      let index = characterGraphicIndex % characterGraphicsRight.length;
-
-      currentCharacterImage = characterGraphicsLeft[index];
-
-      characterGraphicIndex = characterGraphicIndex + 1;
     }
 
     if (!isMovingRight && !isMovingLeft) {
       AUDIO_RUNNING.pause();
 
-      isInactive = true;
+      // isInactive = true;
 
-      setTimeout(function(){isInactive=false;
-      isSleep = true;},2000)
-      
+      //  setTimeout(function(){isInactive=false;
+      // isSleep = true;},2000)
     }
   }, 200);
 }
 
+
+/**
+ * This function draw all elements in the game
+ */
+
 function draw() {
   drawBackground();
-
-   
 
   if (game_finished) {
     drawFinalScreen();
 
-    // Draw success screen
+    
   } else {
-    updateCharacter();
+    if (start_screen == false && game_over == false ) {
+      updateCharacter();
 
-    yellowChicken_animated();
+      yellowChicken_animated();
 
-    brownChicken_animated();
+      brownChicken_animated();
 
-    drawBottles();
+      drawBottles();
 
-    drawCoins();
+      drawCoins();
 
-    drawLifes();
+      drawLifes();
+
+      draw_tabascoDisplay();
+
+      draw_lifeDisplay();
+
+      draw_coinDisplay();
+
+      drawThrowBottle();
+    }
 
     requestAnimationFrame(draw);
-
-    draw_tabascoDisplay();
-
-     draw_lifeDisplay();
-
-     draw_coinDisplay();
-
-    drawThrowBottle();
   }
   drawFinalBoss();
 }
@@ -815,17 +773,12 @@ function drawFinalScreen() {
 
   let msg = "Level 1 is complete !";
 
-   
- 
-  if(live_energy == 0){
+  if (live_energy == 0) {
     ctx.font = "50px Lexend Peta";
-    
 
-    msg = "You lost !"
-     
+    msg = "You lost !";
   }
-ctx.fillText(msg, 90, 230);
- 
+  ctx.fillText(msg, 90, 230);
 }
 
 function drawFinalBoss() {
@@ -869,28 +822,16 @@ function drawThrowBottle() {
     let timePassed = new Date().getTime() - bottleThrowTime;
     let gravity = Math.pow(9.81, timePassed / 300);
 
-     thrownBottle_x = 150 + timePassed * 0.3;
+    thrownBottle_x = 150 + timePassed * 0.3;
 
     thrownBottle_y = 300 - (timePassed * 0.6 - gravity);
-
-   
-   
-
-   
-
-      
 
     let base_image = new Image();
     base_image.src = currentrotateBottleImage;
 
-    
-
-    if(thrownBottle_y > 320){
-      
-    base_image.src = currentbrokeBottleImage;
+    if (thrownBottle_y > 320) {
+      base_image.src = currentbrokeBottleImage;
     }
-  
-  
 
     if (base_image.complete) {
       ctx.drawImage(
@@ -899,15 +840,13 @@ function drawThrowBottle() {
         thrownBottle_y,
         base_image.width * 0.25,
         base_image.height * 0.25
-      );}}
-    
-  
+      );
+    }
   }
-
+}
 
 function draw_tabascoDisplay() {
   let base_image = new Image();
-  
 
   if (collectedBottles >= 0 && collectedBottles < 10) {
     base_image.src = "img/tabasco_0.png";
@@ -932,8 +871,8 @@ function draw_tabascoDisplay() {
     );
   }
 
-   ctx.font = '20px Lexend Peta';
-   ctx.fillText('x' + collectedBottles, 20, 60);
+  ctx.font = "20px Lexend Peta";
+  ctx.fillText("x" + collectedBottles, 20, 60);
 }
 
 function draw_coinDisplay() {
@@ -952,7 +891,7 @@ function draw_coinDisplay() {
   } else if (collectedCoins == 50) {
     base_image.src = "img/coin_100.png";
   }
-  
+
   if (base_image.complete) {
     ctx.drawImage(
       base_image,
@@ -963,31 +902,26 @@ function draw_coinDisplay() {
     );
   }
 
-   ctx.font = "20px Lexend Peta";
-   ctx.fillText("x" + collectedCoins, 220, 60);
+  ctx.font = "20px Lexend Peta";
+  ctx.fillText("x" + collectedCoins, 220, 60);
 }
-
-
-
-
 
 function draw_lifeDisplay() {
   let base_image = new Image();
 
-
-   if (live_energy <= 100 && live_energy >80 ) {
-     base_image.src = "img/life_100.png";
-   } else if (live_energy <= 80 && live_energy >60) {
-     base_image.src = "img/life_80.png";
-   } else if (live_energy <= 60 && live_energy >40) {
-     base_image.src = "img/life_60.png";
-   } else if (live_energy <= 40 && live_energy >20) {
-     base_image.src = "img/life_40.png";
-   } else if (live_energy <= 20 && live_energy >0) {
-     base_image.src = "img/life_20.png";
-   } else if (live_energy == 0) {
-     base_image.src = "img/life_0.png";
-   }
+  if (live_energy <= 100 && live_energy > 80) {
+    base_image.src = "img/life_100.png";
+  } else if (live_energy <= 80 && live_energy > 60) {
+    base_image.src = "img/life_80.png";
+  } else if (live_energy <= 60 && live_energy > 40) {
+    base_image.src = "img/life_60.png";
+  } else if (live_energy <= 40 && live_energy > 20) {
+    base_image.src = "img/life_40.png";
+  } else if (live_energy <= 20 && live_energy > 0) {
+    base_image.src = "img/life_20.png";
+  } else if (live_energy == 0) {
+    base_image.src = "img/life_0.png";
+  }
   if (base_image.complete) {
     ctx.drawImage(
       base_image,
@@ -996,18 +930,11 @@ function draw_lifeDisplay() {
       base_image.width * 0.3,
       base_image.height * 0.3
     );
-    
   }
 
   ctx.font = "20px Lexend Peta ";
-  ctx.fillText(live_energy+"%", 420, 60);
-
-  
-
-
+  ctx.fillText(live_energy + "%", 420, 60);
 }
-
-
 
 function drawBottles() {
   for (let i = 0; i < placedBottles.length; i++) {
@@ -1015,7 +942,6 @@ function drawBottles() {
     addBackgroundObject("img/tabasco.png", bottle_x, 350, 0.5, 1);
   }
 }
-
 
 function drawCoins() {
   for (let i = 0; i < placedCoins_x.length; i++) {
@@ -1032,39 +958,38 @@ function drawLifes() {
 }
 
 
+function hurt(){
 
-
-
-function updateCharacter() {
-  let base_image = new Image();
+   let base_image = new Image();
   base_image.src = currentCharacterImage;
 
-  let timePassedSinceJump = new Date().getTime() - lastJumpStarted;
-
-
-  if(isHurt == true){
+  
     base_image.src = currenthurtCharakterImage;
 
-     setInterval(function(){
-
+    setInterval(function () {
       let index = charakterHurtIndex % hurtCharakter.length;
 
       currenthurtCharakterImage = hurtCharakter[index];
 
-     charakterHurtIndex =charakterHurtIndex + 1;
+      charakterHurtIndex = charakterHurtIndex + 1;
 
-      if(charakterHurtIndex >2){
+      if (charakterHurtIndex > 2) {
         charakterHurtIndex = 0;
+      }
+      
+       },500);
+
       }
 
 
-    },500)
 
 
-  
-  }
+function dead(){
 
-  else if (isDead == true) {
+  let base_image = new Image();
+  base_image.src = currentCharacterImage;
+
+   
     base_image.src = currentdeadCharakterImage;
 
     setInterval(function () {
@@ -1075,37 +1000,73 @@ function updateCharacter() {
       charakterDeadIndex = charakterDeadIndex + 1;
     }, 600);
 
-  
+
+
+
+}
+
+
+function inactive(){
+
+  let base_image = new Image();
+  base_image.src = currentinactiveCharakterImage;
+
+  setInterval(function () {
+    let index = charakterInactiveIndex % inactiveCharakter.length;
+
+    currentinactiveCharakterImage = inactiveCharakter[index];
+
+    charakterInactiveIndex = charakterInactiveIndex + 1;
+  }, 500);
+
+}
+
+
+
+function sleep(){
+ 
+  let base_image = new Image();
+  base_image.src = currentsleepCharakterImage;
+
+  setInterval(function () {
+    let index = charakterSleepIndex % sleepCharakter.length;
+
+    currentsleepCharakterImage = sleepCharakter[index];
+
+    charakterSleepIndex++;
+  }, 500);
+
+}
+
+
+/**
+ * This function change the pictures for the different situation from the figure
+ */
+
+function updateCharacter() {
+  let base_image = new Image();
+  base_image.src = currentCharacterImage;
+
+  let timePassedSinceJump = new Date().getTime() - lastJumpStarted;
+
+  if(isHurt == true){
+
+  hurt();}
+
+  else if(isDead == true){
+
+   dead();
 
   } else if (isInactive == true) {
-    base_image.src = currentinactiveCharakterImage;
-
-    setInterval(function () {
-      let index = charakterInactiveIndex % inactiveCharakter.length;
-
-      currentinactiveCharakterImage = inactiveCharakter[index];
-
-      charakterInactiveIndex = charakterInactiveIndex + 1;
-    }, 500);
-
-    
-  
+   
+    inactive();
 
   } else if (isSleep == true) {
-    base_image.src = currentsleepCharakterImage;
-
-    setInterval(function () {
-      let index = charakterSleepIndex % sleepCharakter.length;
-
-      currentsleepCharakterImage = sleepCharakter[index];
-
-      charakterSleepIndex++;
-    }, 500);
-
     
-  } 
-  
-  else if (timePassedSinceJump < JUMP_TIME) {
+    sleep();
+
+
+  } else if (timePassedSinceJump < JUMP_TIME) {
     character_y = character_y - 12.5;
   } else {
     // Check falling
@@ -1128,44 +1089,63 @@ function updateCharacter() {
   }
 }
 
+
+/**
+ * This function draw the background from the game
+ */
+
 function drawBackground() {
   ctx.fillStyle = "white";
 
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   drawGround();
-
-
- 
 }
 
+
+/**
+ * This function draw the ground in the game
+ */
+
 function drawGround() {
-  if (isMovingRight) {
-    bg_elements = bg_elements - GAME_SPEED;
+  if (start_screen == false && game_over == false) {
+    if (isMovingRight) {
+      bg_elements = bg_elements - GAME_SPEED;
+    }
+
+    if (isMovingLeft && bg_elements < 500) {
+      bg_elements = bg_elements + GAME_SPEED;
+    }
   }
 
-  if (isMovingLeft && bg_elements < 500) {
-    bg_elements = bg_elements + GAME_SPEED;
+  if (start_screen == true) {
+    addBackgroundObject("img/start_screen.png", 0, 0, 0.45, 1);
   }
 
+  if(game_over == true){
+     addBackgroundObject("img/game_over.png", 0, 0, 0.45, 1);
+     document.getElementById('restart-btn').classList.remove('d-none');
 
-  addBackgroundObject("img/background.png", 0, 0, 0.45, 1);
 
-  addBackgroundObject("img/background.png", 1725, 0, 0.45, 1);
+  }
 
-  addBackgroundObject("img/background.png", 3450, 0, 0.45, 1);
+  if (start_screen == false && game_over == false) {
+    addBackgroundObject("img/background.png", 0, 0, 0.45, 1);
 
-  addBackgroundObject("img/background.png", 5175, 0, 0.45, 1);
+    addBackgroundObject("img/background.png", 1725, 0, 0.45, 1);
 
-  addBackgroundObject("img/background.png", 6900, 0, 0.45, 1);
+    addBackgroundObject("img/background.png", 3450, 0, 0.45, 1);
 
-  addBackgroundObject("img/background.png", 8625, 0, 0.45, 1);
+    addBackgroundObject("img/background.png", 5175, 0, 0.45, 1);
 
-  addBackgroundObject("img/background.png", 10350, 0, 0.45, 1);
+    addBackgroundObject("img/background.png", 6900, 0, 0.45, 1);
 
-  addBackgroundObject("img/background.png", 12075, 0, 0.45, 1);
+    addBackgroundObject("img/background.png", 8625, 0, 0.45, 1);
 
- 
+    addBackgroundObject("img/background.png", 10350, 0, 0.45, 1);
+
+    addBackgroundObject("img/background.png", 12075, 0, 0.45, 1);
+  }
 }
 
 function addBackgroundObject(src, offsetX, offsetY, scale, opacity) {
@@ -1184,8 +1164,13 @@ function addBackgroundObject(src, offsetX, offsetY, scale, opacity) {
       base_image.height * scale
     );
   }
-  ctx.globalAlpha = 1; 
+  ctx.globalAlpha = 1;
 }
+
+
+/**
+ * This function show what tasks the different keys have
+ */
 
 function listenForKeys() {
   document.addEventListener("keydown", (e) => {
@@ -1193,12 +1178,10 @@ function listenForKeys() {
 
     if (k == "ArrowRight") {
       isMovingRight = true;
-      // character_x = character_x + 5;
     }
 
     if (k == "ArrowLeft") {
       isMovingLeft = true;
-      // character_x = character_x - 5;
     }
 
     if (k == "d" && collectedBottles > 0) {
@@ -1213,16 +1196,11 @@ function listenForKeys() {
       }
     }
 
-    //if(e.code == "Space"){
-     //  isJumping = true;
-    //}
     let timePassedSinceJump = new Date().getTime() - lastJumpStarted;
 
     if (e.code == "Space" && timePassedSinceJump > JUMP_TIME * 2) {
       isJumping = true;
 
-    
-     
       AUDIO_JUMP.play();
 
       lastJumpStarted = new Date().getTime();
@@ -1234,16 +1212,10 @@ function listenForKeys() {
 
     if (k == "ArrowRight") {
       isMovingRight = false;
-      //  character_x = character_x + 5;
     }
 
     if (k == "ArrowLeft") {
       isMovingLeft = false;
-      //   character_x = character_x - 5;
     }
-
-    //  if (e.code == "Space") {
-    //   isJumping = false;
-    // }
   });
 }
