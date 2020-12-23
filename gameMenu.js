@@ -1,6 +1,6 @@
 
 /**
- * In this function you can choose between normal and fullscreen mode
+ * This function can choose between normal and fullscreen mode
  */
 
 function gameMode() {
@@ -22,18 +22,11 @@ function gameMode() {
 
 
 /**
- * In this function you can open the game in fullscreen mode
+ * This function hide the description from the game
  */
 
-function fullscreenGame() {
-  start_screen = false;
+function hideDescription()  {
 
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight * 0.8;
-
-  document.getElementById("canvas").classList.add("fullscreen");
-
-  document.getElementById("h1").classList.add("d-none");
 
   document.getElementById("description1").classList.add("d-none");
 
@@ -43,6 +36,28 @@ function fullscreenGame() {
 
   document.getElementById("description4").classList.add("d-none");
 
+}
+
+
+
+/**
+ * This function can open the game in fullscreen mode
+ */
+
+function fullscreenGame() {
+  start_screen = false;
+
+  fullscreen = true;
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight * 0.8;
+
+  document.getElementById("canvas").classList.add("fullscreen");
+
+  document.getElementById("h1").classList.add("d-none");
+
+  hideDescription();
+
   document.getElementById("body").classList.add("body-fullscreen");
 
   document.getElementById("start-btn").classList.add("d-none");
@@ -50,6 +65,8 @@ function fullscreenGame() {
   document.getElementById("normalmode-btn").classList.add("d-none");
 
   document.getElementById("fullscreenmode-btn").classList.add("d-none");
+
+  checkForCollision_new();
 
   if (canvas.requestFullscreen) {
     canvas.requestFullscreen();
@@ -59,7 +76,7 @@ function fullscreenGame() {
 
 
 /**
- * In this function you can open the game in normal mode
+ * This function  can open the game in normal mode
  */
 
 function startNormal() {
@@ -70,18 +87,16 @@ function startNormal() {
 
   document.getElementById("fullscreenmode-btn").classList.add("d-none");
 
-  document.getElementById("description1").classList.add("d-none");
+  hideDescription();
 
-  document.getElementById("description2").classList.add("d-none");
-
-  document.getElementById("description3").classList.add("d-none");
-
-  document.getElementById("description4").classList.add("d-none");
+  checkForCollision_new();
+  
+  fullscreen = false;
 }
 
 
 /**
- * In this function you can restart the game
+ * This function  can restart the game
  */
 
 function restart(){
@@ -94,11 +109,11 @@ function restart(){
 
   game_over = false;
 
-  
+  live_energy = 100; 
 
+  collectedCoins = 0;
 
+  collectedBottles = 5;
 
-
-
-
+  bg_elements = 0;
 }

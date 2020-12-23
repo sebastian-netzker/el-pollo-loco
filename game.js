@@ -1,23 +1,256 @@
-const IMG1 = "./img/bg_elem_1.png";
-const IMG2 = "./img/bg_elem_2.png";
-const IMG3 = "./img/charakter_1.png";
-const IMG4 = "./img/charakter_2.png";
-const IMG5 = "./img/charakter_3.png";
-const IMG6 = "./img/charakter_4.png";
-const IMG7 = "./img/charakter_jumping.png";
-const IMG8 = "./img/charakter_left_1.png";
-const IMG9 = "./img/charakter_left_2.png";
-const IMG10 = "./img/charakter_left_3.png";
-const IMG11 = "./img/charakter_left_4.png";
-const IMG12 = "./img/chicken_big.png";
-const IMG13 = "./img/chicken_dead.png";
-const IMG14 = "./img/chicken1.png";
-const IMG15 = "./img/chicken2.png";
-const IMG16 = "./img/cloud1.png";
-const IMG17 = "./img/cloud2.png";
-const IMG18 = "./img/hit.png";
-const IMG19 = "./img/sand.png";
-const IMG20 = "./img/tabasco.png";
+const IMG1 = "./img/chicken_boss/chicken_boss_attack/chicken_boss_attack_1.png";
+
+const IMG2 = "./img/chicken_boss/chicken_boss_attack/chicken_boss_attack_2.png";
+
+const IMG3 = "./img/chicken_boss/chicken_boss_attack/chicken_boss_attack_3.png";
+
+const IMG4 = "./img/chicken_boss/chicken_boss_attack/chicken_boss_attack_4.png";
+
+const IMG5 = "./img/chicken_boss/chicken_boss_attack/chicken_boss_attack_5.png";
+
+const IMG6 = "./img/chicken_boss/chicken_boss_attack/chicken_boss_attack_6.png";
+
+const IMG7 = "./img/chicken_boss/chicken_boss_attack/chicken_boss_attack_7.png";
+
+const IMG8 = "./img/chicken_boss/chicken_boss_attack/chicken_boss_attack_8.png";
+
+
+const IMG9 = "./img/chicken_boss/chicken_boss_caution/chicken_boss_caution_1.png";
+
+const IMG10 = "./img/chicken_boss/chicken_boss_caution/chicken_boss_caution_2.png";
+
+const IMG11 = "./img/chicken_boss/chicken_boss_caution/chicken_boss_caution_3.png";
+
+const IMG12 = "./img/chicken_boss/chicken_boss_caution/chicken_boss_caution_4.png";
+
+const IMG13 = "./img/chicken_boss/chicken_boss_caution/chicken_boss_caution_5.png";
+
+const IMG14 = "./img/chicken_boss/chicken_boss_caution/chicken_boss_caution_6.png";
+
+const IMG15 = "./img/chicken_boss/chicken_boss_caution/chicken_boss_caution_7.png";
+
+const IMG16 = "./img/chicken_boss/chicken_boss_caution/chicken_boss_caution_8.png";
+
+const IMG17 = "./img/chicken_boss/chicken_boss_dead/chickenboss_dead_1.png";
+
+const IMG18 = "./img/chicken_boss/chicken_boss_dead/chickenboss_dead_2.png";
+
+const IMG19 = "./img/chicken_boss/chicken_boss_dead/chickenboss_dead_3.png";
+
+
+const IMG20 = "./img/chicken_boss/chicken_boss_hurt/chickenboss_hurt_1.png";
+
+const IMG21 = "./img/chicken_boss/chicken_boss_hurt/chickenboss_hurt_2.png";
+
+const IMG22 = "./img/chicken_boss/chicken_boss_hurt/chickenboss_hurt_3.png";
+
+
+
+const IMG23 = "./img/chicken_boss/chicken_boss_walk/chicken_boss_walk_1.png";
+
+const IMG24 = "./img/chicken_boss/chicken_boss_walk/chicken_boss_walk_2.png";
+
+const IMG25 = "./img/chicken_boss/chicken_boss_walk/chicken_boss_walk_3.png";
+
+const IMG26 = "./img/chicken_boss/chicken_boss_walk/chicken_boss_walk_4.png";
+
+const IMG27 = "./img/chicken/brown_chicken_1.png";
+
+const IMG28 = "./img/chicken/brown_chicken_2.png";
+
+
+const IMG29 = "./img/chicken/brown_chicken_3.png";
+
+const IMG30 = "./img/chicken/chicken_dead_brown.png";
+
+
+const IMG31 = "./img/chicken/yellow_chicken_1.png";
+
+const IMG32 = "./img/chicken/yellow_chicken_2.png";
+
+const IMG33 = "./img/chicken/yellow_chicken_3.png";
+
+const IMG34 = "./img/chicken/chicken_dead_yellow.png";
+
+
+
+const IMG35 = "./img/charakter/charakter_dead_1.png";
+
+const IMG36 = "./img/charakter/charakter_dead_2.png";
+
+const IMG37 = "./img/charakter/charakter_dead_3.png";
+
+const IMG38 = "./img/charakter/charakter_dead_4.png";
+
+const IMG39 = "./img/charakter/charakter_dead_5.png";
+
+
+const IMG40 = "./img/charakter/charakter_dead_6.png";
+
+const IMG41 = "./img/charakter/charakter_dead_7.png";
+
+
+const IMG42 = "./img/charakter/charakter_hurt_1.png";
+
+const IMG43 = "./img/charakter/charakter_hurt_2.png";
+
+const IMG44 = "./img/charakter/charakter_hurt_3.png";
+
+
+
+const IMG45 = "./img/charakter/charakter_inactive_1.png";
+
+const IMG46 = "./img/charakter/charakter_inactive_2.png";
+
+const IMG47 = "./img/charakter/charakter_inactive_3.png";
+
+const IMG48 = "./img/charakter/charakter_inactive_4.png";
+
+const IMG49 = "./img/charakter/charakter_inactive_5.png";
+
+const IMG50 = "./img/charakter/charakter_inactive_6.png";
+
+const IMG51 = "./img/charakter/charakter_inactive_7.png";
+
+const IMG52 = "./img/charakter/charakter_inactive_8.png";
+
+const IMG53 = "./img/charakter/charakter_inactive_9.png";
+
+const IMG54 = "./img/charakter/charakter_inactive_10.png";
+
+
+const IMG55 = "./img/charakter/charakter_jump_1.png";
+
+const IMG56 = "./img/charakter/charakter_jump_2.png";
+
+const IMG57 = "./img/charakter/charakter_jump_3.png";
+
+const IMG58 = "./img/charakter/charakter_jump_4.png";
+
+const IMG59 = "./img/charakter/charakter_jump_5.png";
+
+const IMG60 = "./img/charakter/charakter_jump_6.png";
+
+const IMG61 = "./img/charakter/charakter_jump_7.png";
+
+const IMG62 = "./img/charakter/charakter_jump_8.png";
+
+const IMG63 = "./img/charakter/charakter_jump_9.png";
+
+
+const IMG64 = "./img/charakter/charakter_sleep_1.png";
+
+const IMG65 = "./img/charakter/charakter_sleep_2.png";
+
+const IMG66 = "./img/charakter/charakter_sleep_3.png";
+
+const IMG67 = "./img/charakter/charakter_sleep_4.png";
+
+const IMG68 = "./img/charakter/charakter_sleep_5.png";
+
+const IMG69 = "./img/charakter/charakter_sleep_6.png";
+
+const IMG70 = "./img/charakter/charakter_sleep_7.png";
+
+const IMG71 = "./img/charakter/charakter_sleep_8.png";
+
+const IMG72 = "./img/charakter/charakter_sleep_9.png";
+
+const IMG73 = "./img/charakter/charakter_sleep_10.png";
+
+
+const IMG74 = "./img/charakter/charakter_walkleft_1.png";
+
+const IMG75 = "./img/charakter/charakter_walkleft_2.png";
+
+const IMG76 = "./img/charakter/charakter_walkleft_3.png";
+
+const IMG77 = "./img/charakter/charakter_walkleft_4.png";
+
+const IMG78 = "./img/charakter/charakter_walkleft_5.png";
+
+const IMG79 = "./img/charakter/charakter_walkleft_6.png";
+
+
+const IMG80 = "./img/charakter/charakter_walkright_1.png";
+
+const IMG81 = "./img/charakter/charakter_walkright_2.png";
+
+const IMG82 = "./img/charakter/charakter_walkright_3.png";
+
+const IMG83 = "./img/charakter/charakter_walkright_4.png";
+
+const IMG84 = "./img/charakter/charakter_walkright_5.png";
+
+const IMG85 = "./img/charakter/charakter_walkright_6.png";
+
+const IMG86 = "./img/background.png";
+
+const IMG87 = "./img/coin_0.png";
+
+const IMG88 = "./img/coin_20.png";
+
+const IMG89 = "./img/coin_40.png";
+
+const IMG90 = "./img/coin_60.png";
+
+const IMG91 = "./img/coin_80.png";
+
+const IMG92 = "./img/coin_100.png";
+
+const IMG93 = "./img/coin_big.png";
+
+const IMG94 = "./img/coin_small.png";
+
+const IMG95 = "./img/life_0.png";
+
+const IMG96 = "./img/life_20.png";
+
+const IMG97 = "./img/life_40.png";
+
+const IMG98 = "./img/life_60.png";
+
+const IMG99 = "./img/life_80.png";
+
+const IMG100 = "./img/life_100.png";
+
+const IMG101 = "./img/life_symbol.png";
+
+const IMG102 = "./img/game_over.png";
+
+const IMG103 = "./img/start_screen.png";
+
+const IMG104 = "./img/tabasco_0.png";
+
+const IMG105 = "./img/tabasco_20.png";
+
+const IMG106 = "./img/tabasco_40.png";
+
+const IMG107 = "./img/tabasco_60.png";
+
+const IMG108 = "./img/tabasco_80.png";
+
+const IMG109 = "./img/tabasco_100.png";
+
+
+const IMG110 = "./img/tabasco_broken_1.png";
+const IMG111 = "./img/tabasco_broken_2.png";
+const IMG112 = "./img/tabasco_broken_3.png";
+const IMG113 = "./img/tabasco_broken_4.png";
+const IMG114 = "./img/tabasco_broken_5.png";
+const IMG115 = "./img/tabasco_broken_6.png";
+
+const IMG116 = "./img/tabasco_rotate_1.png";
+const IMG117 = "./img/tabasco_rotate_2.png";
+const IMG118 = "./img/tabasco_rotate_3.png";
+const IMG119= "./img/tabasco_rotate_4.png";
+
+const IMG120 = "./img/tabasco.png";
+
+
+
+
+
 
 let imagePaths = [
   IMG1,
@@ -40,7 +273,110 @@ let imagePaths = [
   IMG18,
   IMG19,
   IMG20,
+  IMG21,
+  IMG22,
+  IMG23,
+  IMG24,
+  IMG25,
+  IMG26,
+  IMG27,
+  IMG28,
+  IMG29,
+  IMG30,
+  IMG31,
+  IMG32,
+  IMG33,
+  IMG34,
+  IMG35,
+  IMG36,
+  IMG37,
+  IMG38,
+  IMG39,
+  IMG40,
+  IMG41,
+  IMG42,
+  IMG43,
+  IMG44,
+  IMG45,
+  IMG46,
+  IMG47,
+  IMG48,
+  IMG49,
+  IMG50,
+  IMG51,
+  IMG52,
+  IMG53,
+  IMG54,
+  IMG55,
+  IMG56,
+  IMG57,
+  IMG58,
+  IMG59,
+  IMG60,
+  IMG61,
+  IMG62,
+  IMG63,
+  IMG64,
+  IMG65,
+  IMG66,
+  IMG67,
+  IMG68,
+  IMG69,
+  IMG70,
+  IMG71,
+  IMG72,
+  IMG73,
+  IMG74,
+  IMG75,
+  IMG76,
+  IMG77,
+  IMG78,
+  IMG79,
+  IMG80,
+  IMG81,
+  IMG82,
+  IMG83,
+  IMG84,
+  IMG85,
+  IMG86,
+  IMG87,
+  IMG88,
+  IMG89,
+  IMG90,
+  IMG91,
+  IMG92,
+  IMG93,
+  IMG94,
+  IMG95,
+  IMG96,
+  IMG97,
+  IMG98,
+  IMG99,
+  IMG100,
+  IMG101,
+  IMG102,
+  IMG103,
+  IMG104,
+  IMG105,
+  IMG106,
+  IMG107,
+  IMG108,
+  IMG109,
+  IMG110,
+  IMG111,
+  IMG112,
+  IMG113,
+  IMG114,
+  IMG115,
+  IMG116,
+  IMG117,
+  IMG118,
+  IMG119,
+  IMG120
 ];
+
+
+let images = [];
 
 let canvas;
 
@@ -66,6 +402,8 @@ let live_energy = 100;
 
 let start_screen = true;
 
+let fullscreen = false;
+
 let game_over = false;
 
 let character_energy = 100;
@@ -86,19 +424,21 @@ let isSleep = false;
 
 let isDead = false;
 
+let brownChickenDead ;
+
 let isInactive = false;
 
 let bg_elements = 0;
 
 let lastJumpStarted = 0;
 
-let currentCharacterImage = "img/charakter_walk_1.png";
+let currentCharacterImage = "img/charakter/charakter_walkright_1.png";
 
-let currentJumpImage = "img/charakter_jump_1.png";
+let currentJumpImage = "img/charakter/charakter_jump_1.png";
 
-let currentyellowChickenImage = "img/yellow_chicken_1.png";
+let currentyellowChickenImage = "img/chicken/yellow_chicken_1.png";
 
-let currentbrownChickenImage = "img/brown_chicken_1.png";
+let currentbrownChickenImage = "img/chicken/brown_chicken_1.png";
 
 let currentbossChickenImage =
   "img/chicken_boss/chicken_boss_walk/chicken_boss_walk_1.png";
@@ -107,33 +447,42 @@ let currentrotateBottleImage = "img/tabasco_rotate_1.png";
 
 let currentbrokeBottleImage = "img/tabasco_broken_1.png";
 
-let currenthurtCharakterImage = "img/charakter_hurt_1.png";
+let currenthurtCharakterImage = "img/charakter/charakter_hurt_1.png";
 
-let currentdeadCharakterImage = "img/charakter_hurt_1.png";
+let currentdeadCharakterImage = "img/charakter/charakter_hurt_1.png";
 
-let currentinactiveCharakterImage = "img/charakter_inactive_1.png";
+let currentinactiveCharakterImage = "img/charakter/charakter_inactive_1.png";
 
-let currentsleepCharakterImage = "img/charakter_sleep_1.png";
+let currentsleepCharakterImage = "img/charakter/charakter_sleep_1.png";
 
 let characterGraphicsRight = [
-  "img/charakter_walk_1.png",
-  "img/charakter_walk_2.png",
-  "img/charakter_walk_3.png",
-  "img/charakter_walk_4.png",
-  "img/charakter_walk_5.png",
-  "img/charakter_walk_6.png",
+  "img/charakter/charakter_walkright_1.png",
+  "img/charakter/charakter_walkright_2.png",
+  "img/charakter/charakter_walkright_3.png",
+  "img/charakter/charakter_walkright_4.png",
+  "img/charakter/charakter_walkright_5.png",
+  "img/charakter/charakter_walkright_6.png",
+];
+
+let characterGraphicsLeft = [
+  "img/charakter/charakter_walkleft_1.png",
+  "img/charakter/charakter_walkleft_2.png",
+  "img/charakter/charakter_walkleft_3.png",
+  "img/charakter/charakter_walkleft_4.png",
+  "img/charakter/charakter_walkleft_5.png",
+  "img/charakter/charakter_walkleft_6.png",
 ];
 
 let brownChicken = [
-  "img/brown_chicken_1.png",
-  "img/brown_chicken_2.png",
-  "img/brown_chicken_3.png",
+  "img/chicken/brown_chicken_1.png",
+  "img/chicken/brown_chicken_2.png",
+  "img/chicken/brown_chicken_3.png",
 ];
 
 let yellowChicken = [
-  "img/yellow_chicken_1.png",
-  "img/yellow_chicken_2.png",
-  "img/yellow_chicken_3.png",
+  "img/chicken/yellow_chicken_1.png",
+  "img/chicken/yellow_chicken_2.png",
+  "img/chicken/yellow_chicken_3.png",
 ];
 
 let bossChicken = [
@@ -144,21 +493,21 @@ let bossChicken = [
 ];
 
 let jumpCharacter = [
-  // "img/charakter_jump_1.png",
-  // "img/charakter_jump_2.png",
-  // "img/charakter_jump_3.png",
-  // "img/charakter_jump_4.png",
-  "img/charakter_jump_5.png",
-  "img/charakter_jump_6.png",
-  "img/charakter_jump_7.png",
-  "img/charakter_jump_8.png",
-  "img/charakter_jump_9.png",
+  // "img/charakter/charakter_jump_1.png",
+  // "img/charakter/charakter_jump_2.png",
+  // "img/charakter/charakter_jump_3.png",
+  // "img/charakter/charakter_jump_4.png",
+  "img/charakter/charakter_jump_5.png",
+  "img/charakter/charakter_jump_6.png",
+  "img/charakter/charakter_jump_7.png",
+  "img/charakter/charakter_jump_8.png",
+  "img/charakter/charakter_jump_9.png",
 ];
 
 let hurtCharakter = [
-  "img/charakter_hurt_1.png",
-  "img/charakter_hurt_2.png",
-  "img/charakter_hurt_3.png",
+  "img/charakter/charakter_hurt_1.png",
+  "img/charakter/charakter_hurt_2.png",
+  "img/charakter/charakter_hurt_3.png",
 ];
 
 let deadCharakter = [
@@ -172,29 +521,29 @@ let deadCharakter = [
 ];
 
 let inactiveCharakter = [
-  "img/charakter_inactive_1.png",
-  "img/charakter_inactive_2.png",
-  "img/charakter_inactive_3.png",
-  "img/charakter_inactive_4.png",
-  "img/charakter_inactive_5.png",
-  "img/charakter_inactive_6.png",
-  "img/charakter_inactive_7.png",
-  "img/charakter_inactive_8.png",
-  "img/charakter_inactive_9.png",
-  "img/charakter_inactive_10.png",
+  "img/charakter/charakter_inactive_1.png",
+  "img/charakter/charakter_inactive_2.png",
+  "img/charakter/charakter_inactive_3.png",
+  "img/charakter/charakter_inactive_4.png",
+  "img/charakter/charakter_inactive_5.png",
+  "img/charakter/charakter_inactive_6.png",
+  "img/charakter/charakter_inactive_7.png",
+  "img/charakter/charakter_inactive_8.png",
+  "img/charakter/charakter_inactive_9.png",
+  "img/charakter/charakter_inactive_10.png",
 ];
 
 let sleepCharakter = [
-  "img/charakter_sleep_1.png",
-  "img/charakter_sleep_2.png",
-  "img/charakter_sleep_3.png",
-  "img/charakter_sleep_4.png",
-  "img/charakter_sleep_5.png",
-  "img/charakter_sleep_6.png",
-  "img/charakter_sleep_7.png",
-  "img/charakter_sleep_8.png",
-  "img/charakter_sleep_9.png",
-  "img/charakter_sleep_10.png",
+  "img/charakter/charakter_sleep_1.png",
+  "img/charakter/charakter_sleep_2.png",
+  "img/charakter/charakter_sleep_3.png",
+  "img/charakter/charakter_sleep_4.png",
+  "img/charakter/charakter_sleep_5.png",
+  "img/charakter/charakter_sleep_6.png",
+  "img/charakter/charakter_sleep_7.png",
+  "img/charakter/charakter_sleep_8.png",
+  "img/charakter/charakter_sleep_9.png",
+  "img/charakter/charakter_sleep_10.png",
 ];
 
 let rotateBottle = [
@@ -274,7 +623,7 @@ let placedLifes_x = [400, 500, 800, 1000, 1200, 1400, 1800, 2000, 2200, 2400];
 
 let placedCoins_y = [];
 
-let collectedBottles = 20;
+let collectedBottles = 5;
 
 let collectedCoins = 0;
 
@@ -296,7 +645,7 @@ let JUMP_TIME = 300; // in ms
 
 let GAME_SPEED = 10;
 
-let BOSS_POSITION = 10000;
+let BOSS_POSITION = 13000;
 
 let AUDIO_RUNNING = new Audio("audio/running.mp3");
 
@@ -318,21 +667,36 @@ AUDIO_BACKGROUND_MUSIC.loop = false;
 
 AUDIO_BACKGROUND_MUSIC.volume = 0.2;
 
-//function preloadImages(){
 
-//for(let i = 0; i < imagePaths.length; i++) {
 
-//let image = new Image();
 
-//image.src = imagePaths[i];
+/**
+ * This function preoload all Images
+ */
 
-//imagePaths.push(image);
+function preloadImages(){
 
-//}
+for(let i = 0; i < imagePaths.length; i++) {
 
-//}
+let image = new Image();
+
+image.src = imagePaths[i];
+
+images.push(image);
+
+}
+
+}
+
+
+/**
+ * This funtion initialize all function which are of importance for the game 
+ */
 
 function init() {
+
+preloadImages();
+
   canvas = document.getElementById("canvas");
 
   ctx = canvas.getContext("2d");
@@ -358,8 +722,7 @@ function init() {
   calculateChickenYellowPosition();
 
   calculateChickenBrownPosition();
-
-  checkForCollision_new();
+  
 }
 
 /**
@@ -375,7 +738,7 @@ function checkChickenYellow() {
       ) {
         if (character_y > 90) {
           live_energy = live_energy - 2;
-          //isHurt = true;
+          isHurt = true;
 
           if (charakterHurtIndex > 2) {
             isHurt = false;
@@ -385,7 +748,7 @@ function checkChickenYellow() {
         if (live_energy < 0) {
           live_energy = 0;
           game_over = true;
-          // isHurt = false;
+           isHurt = false;
           // isDead = true;
         }
 
@@ -410,7 +773,15 @@ function checkChickenBrown() {
       ) {
         if (character_y > 90) {
           live_energy = live_energy - 2;
-          //isHurt = true;
+           isHurt = true;
+
+          if(character_y > chickens_2[i].chicken_y){
+
+            
+              alert('KOLLISION!');
+            //brownChickenDead = true;
+            
+          }
 
           if (charakterHurtIndex > 2) {
             isHurt = false;
@@ -419,7 +790,7 @@ function checkChickenBrown() {
 
         if (live_energy < 0) {
           live_energy = 0;
-          // isHurt = false;
+           isHurt = false;
           // isDead = true;
         }
 
@@ -524,6 +895,10 @@ function checkForCollision_new() {
   checkBoss();
 }
 
+/**
+ * This function show the finish level animation
+ */
+
 function finishLevel() {
   AUDIO_CHICKEN.play();
 
@@ -602,6 +977,10 @@ function bossChicken_move() {
   }, 400);
 }
 
+/**
+ * This function draw the yellow chickens
+ */
+
 function yellowChicken_animated() {
   let base_image = new Image();
   base_image.src = currentyellowChickenImage;
@@ -619,9 +998,17 @@ function yellowChicken_animated() {
   }
 }
 
+/**
+ * This function draw the brown chickens
+ */
+
 function brownChicken_animated() {
   let base_image = new Image();
   base_image.src = currentbrownChickenImage;
+
+  if(brownChickenDead == true){
+    base_image.src=IMG30;
+  }
 
   if (base_image.complete) {
     for (i = 0; i < chickens_2.length; i++) {
@@ -717,15 +1104,50 @@ function checkForRunning() {
       characterGraphicIndex = characterGraphicIndex + 1;
     }
 
+    if(isMovingLeft){
+       
+      AUDIO_RUNNING.play();
+
+      isInactive = false;
+
+      isSleep = false;
+
+        let index = characterGraphicIndex % characterGraphicsLeft.length;
+
+        currentCharacterImage = characterGraphicsLeft[index];
+
+        characterGraphicIndex = characterGraphicIndex + 1;
+
+    }
+
+    if(isHurt == true){
+
+      hurt();
+
+      setInterval(function(){
+
+        isHurt = false;
+
+
+      },2000)
+    }
+
+
+
     if (!isMovingRight && !isMovingLeft) {
       AUDIO_RUNNING.pause();
 
-      // isInactive = true;
+     // setTimeout(function(){
+    //    isSleep = true;
 
-      //  setTimeout(function(){isInactive=false;
-      // isSleep = true;},2000)
+     //   sleep();
+
+    //  },500)
+
     }
-  }, 200);
+     
+  }, 300);
+
 }
 
 
@@ -768,18 +1190,10 @@ function draw() {
   drawFinalBoss();
 }
 
-function drawFinalScreen() {
-  ctx.font = "30px Lexend Peta";
 
-  let msg = "Level 1 is complete !";
-
-  if (live_energy == 0) {
-    ctx.font = "50px Lexend Peta";
-
-    msg = "You lost !";
-  }
-  ctx.fillText(msg, 90, 230);
-}
+/**
+ * This function draw the boss chicken
+ */
 
 function drawFinalBoss() {
   let chicken_x = BOSS_POSITION;
@@ -817,6 +1231,11 @@ function drawFinalBoss() {
   }
 }
 
+
+/**
+ * This function make the throwing ability for the tabasco bottle
+ */
+
 function drawThrowBottle() {
   if (bottleThrowTime) {
     let timePassed = new Date().getTime() - bottleThrowTime;
@@ -844,6 +1263,11 @@ function drawThrowBottle() {
     }
   }
 }
+
+
+/**
+ * This function draw the tabascodisplay at the top of the page
+ */
 
 function draw_tabascoDisplay() {
   let base_image = new Image();
@@ -874,6 +1298,10 @@ function draw_tabascoDisplay() {
   ctx.font = "20px Lexend Peta";
   ctx.fillText("x" + collectedBottles, 20, 60);
 }
+
+/**
+ * This function draw the coindisplay at the top of the page
+ */
 
 function draw_coinDisplay() {
   let base_image = new Image();
@@ -906,6 +1334,11 @@ function draw_coinDisplay() {
   ctx.fillText("x" + collectedCoins, 220, 60);
 }
 
+
+/**
+ * This function draw the lifedisplay at the top of the page
+ */
+
 function draw_lifeDisplay() {
   let base_image = new Image();
 
@@ -936,6 +1369,10 @@ function draw_lifeDisplay() {
   ctx.fillText(live_energy + "%", 420, 60);
 }
 
+/**
+ * This function draw the bottles, which the figure can collect
+ */
+
 function drawBottles() {
   for (let i = 0; i < placedBottles.length; i++) {
     let bottle_x = placedBottles[i];
@@ -943,12 +1380,21 @@ function drawBottles() {
   }
 }
 
+/**
+ * This function draw the coins, which the figure can collect
+ */
+
 function drawCoins() {
   for (let i = 0; i < placedCoins_x.length; i++) {
     let coin_x = placedCoins_x[i];
     addBackgroundObject("img/coin_small.png", coin_x, 290, 0.4, 1);
   }
 }
+
+
+/**
+ * This function draw the lifes, which the figure can collect
+ */
 
 function drawLifes() {
   for (let i = 0; i < placedLifes_x.length; i++) {
@@ -958,15 +1404,15 @@ function drawLifes() {
 }
 
 
+
+/**
+ * This function change the picture when the figure is hurting
+ */
+
 function hurt(){
 
-   let base_image = new Image();
-  base_image.src = currentCharacterImage;
 
-  
-    base_image.src = currenthurtCharakterImage;
-
-    setInterval(function () {
+    
       let index = charakterHurtIndex % hurtCharakter.length;
 
       currenthurtCharakterImage = hurtCharakter[index];
@@ -977,20 +1423,19 @@ function hurt(){
         charakterHurtIndex = 0;
       }
       
-       },500);
+       
 
       }
 
 
 
 
+/**
+ * This function chagnge the picture when the figure is dead
+ */
+
 function dead(){
 
-  let base_image = new Image();
-  base_image.src = currentCharacterImage;
-
-   
-    base_image.src = currentdeadCharakterImage;
 
     setInterval(function () {
       let index = charakterDeadIndex % deadCharakter.length;
@@ -1006,35 +1451,35 @@ function dead(){
 }
 
 
+/**
+ * This function change the picture when the figure is inactive 
+ */
+
 function inactive(){
 
-  let base_image = new Image();
-  base_image.src = currentinactiveCharakterImage;
-
-  setInterval(function () {
     let index = charakterInactiveIndex % inactiveCharakter.length;
 
     currentinactiveCharakterImage = inactiveCharakter[index];
 
     charakterInactiveIndex = charakterInactiveIndex + 1;
-  }, 500);
-
+  
 }
 
-
+ 
+/**
+ * This function change the picture when the figure is sleeping
+ */
 
 function sleep(){
  
-  let base_image = new Image();
-  base_image.src = currentsleepCharakterImage;
 
-  setInterval(function () {
+  
     let index = charakterSleepIndex % sleepCharakter.length;
 
     currentsleepCharakterImage = sleepCharakter[index];
 
     charakterSleepIndex++;
-  }, 500);
+ 
 
 }
 
@@ -1051,19 +1496,29 @@ function updateCharacter() {
 
   if(isHurt == true){
 
-  hurt();}
+     base_image.src = currenthurtCharakterImage;
+
+  hurt();
+}
 
   else if(isDead == true){
 
-   dead();
+      base_image.src = currentdeadCharakterImage;
 
-  } else if (isInactive == true) {
-   
-    inactive();
+   dead();}
+
+   else if (isInactive == true) {
+
+
+      base_image.src = currentinactiveCharakterImage;
+
+
 
   } else if (isSleep == true) {
+
+      base_image.src = currentsleepCharakterImage;
     
-    sleep();
+   
 
 
   } else if (timePassedSinceJump < JUMP_TIME) {
@@ -1118,18 +1573,34 @@ function drawGround() {
     }
   }
 
-  if (start_screen == true) {
-    addBackgroundObject("img/start_screen.png", 0, 0, 0.45, 1);
+  if (start_screen == true && fullscreen == false) {
+    addBackgroundObject("img/start_screen.png", -bg_elements, 0, 0.45, 1);
+
   }
 
-  if(game_over == true){
-     addBackgroundObject("img/game_over.png", 0, 0, 0.45, 1);
+  if (start_screen == true && fullscreen == true) {
+    addBackgroundObject("img/start_screen.png", -bg_elements , 0, 0.65, 1);
+  }
+
+
+   if (game_over == true && fullscreen == false) {
+     addBackgroundObject("img/game_over.png", -bg_elements, 0, 0.45, 1);
+     document.getElementById("restart-btn").classList.remove("d-none");
+   }
+
+  if(game_over == true && fullscreen == true ){
+     addBackgroundObject("img/game_over.png", - bg_elements, -100, 0.67, 1);
      document.getElementById('restart-btn').classList.remove('d-none');
 
 
   }
 
   if (start_screen == false && game_over == false) {
+
+
+    addBackgroundObject("img/background.png", -1725, 0, 0.45, 1);
+    
+    
     addBackgroundObject("img/background.png", 0, 0, 0.45, 1);
 
     addBackgroundObject("img/background.png", 1725, 0, 0.45, 1);
@@ -1145,8 +1616,20 @@ function drawGround() {
     addBackgroundObject("img/background.png", 10350, 0, 0.45, 1);
 
     addBackgroundObject("img/background.png", 12075, 0, 0.45, 1);
+
+    addBackgroundObject("img/background.png", 13800, 0, 0.45, 1);
   }
 }
+
+
+/**
+ * This function can draw different background objects
+ * @param {string} src - This string show you the source from the picture
+ * @param {number} offsetX  - This number placed the picture on the x axis
+ * @param {number} offsetY - This number placed the picture on the y axis
+ * @param {number} scale - This number increase or decrase the picture
+ * @param {number} opacity - This number show the opacity from the picture
+ */
 
 function addBackgroundObject(src, offsetX, offsetY, scale, opacity) {
   if (opacity != undefined) {
