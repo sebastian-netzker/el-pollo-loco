@@ -1,6 +1,7 @@
 body {
     font-family: 'Lexend Peta', sans-serif;
     background-color: #cccccc;
+    overflow-y: hidden;
 }
 
 .body-fullscreen {
@@ -12,8 +13,27 @@ body {
 }
 
 canvas {
-    padding-left: 200px;
-    padding-top: 20px;
+    padding: 0;
+    margin: auto;
+    display: block;
+    width: 800px;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
 }
 
 .fullscreen {
@@ -27,12 +47,63 @@ h1 {
     text-align: center;
 }
 
+.button {
+    position: absolute;
+    margin: 20px;
+    bottom: 0px;
+}
+
+.button a {
+    color: white;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #ffaa2b;
+    display: block;
+    position: relative;
+    padding: 10px 50px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    text-shadow: 0px 1px 0px #000;
+    filter: dropshadow(color=#000, offx=0px, offy=1px);
+    -webkit-box-shadow: inset 0 1px 0 #ffe5c4, 0 5px 0 #915100;
+    -moz-box-shadow: inset 0 1px 0 #FFE5C4, 0 5px 0 #915100;
+    box-shadow: inset 0 1px 0 #ffe5c4, 0 5px 0 #915100;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 2px;
+}
+
+.button a:active {
+    top: 10px;
+    background-color: #F78900;
+    -webkit-box-shadow: inset 0 1px 0 #FFE5C4, inset 0 -3px 0 #915100;
+    -moz-box-shadow: inset 0 1px 0 #FFE5C4, inset 0 -3pxpx 0 #915100;
+    box-shadow: inset 0 1px 0 #FFE5C4, inset 0 -3px 0 #915100;
+}
+
+.button:after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    padding: 4px;
+    position: absolute;
+    bottom: -15px;
+    left: -4px;
+    z-index: -1;
+    background-color: #2B1800;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
 button {
     box-sizing: border-box;
     appearance: none;
     background-color: transparent;
     border: 2px solid red;
-    border-radius: 0.6em;
+    border-radius: 2px;
     color: red;
     cursor: pointer;
     display: flex;
@@ -41,41 +112,29 @@ button {
     font-weight: 400;
     line-height: 1;
     margin: 20px;
-    padding: 1.2em 2.8em;
+    padding: 6px 24px;
     text-decoration: none;
     text-align: center;
     text-transform: uppercase;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     position: absolute;
-    bottom: -15px;
-    left: 550px;
+    bottom: 0px;
 }
 
 .third {
-    border-color: yellow;
+    border-color: rgba(255, 255, 0, 0.4);
     color: #fff;
-    box-shadow: 0 0 40px 40px yellow inset, 0 0 0 0 yellow;
+    box-shadow: 0 0 40px 40px rgba(255, 255, 0, 0.4) inset, 0 0 0 0 rgba(255, 255, 0, 0.4);
     transition: all 150ms ease-in-out;
 }
 
 .third:hover {
-    box-shadow: 0 0 10px 0 yellow inset, 0 0 10px 4px yellow;
+    box-shadow: 0 0 10px 0 rgba(255, 255, 0, 0.4) inset, 0 0 10px 4px rgba(255, 255, 0, 0.4);
 }
 
 .d-none {
     display: none;
-}
-
-.game-description {
-    font-size: 25px;
-    position: absolute;
-    top: 250px;
-    left: 400px;
-    display: table;
-    margin: 0 auto;
-    text-align: center;
-    background-color: rgba(255, 255, 0, 0.733);
 }
 
 .left-side {
@@ -97,4 +156,40 @@ img {
 
 img:hover {
     cursor: pointer;
+}
+
+.description {
+    align-items: center;
+    margin-top: 10px;
+}
+
+.description h4 {
+    text-align: center;
+}
+
+@media(max-width:830px) {
+    h1, h4 {
+        display: none;
+    }
+    canvas, .overlay {
+        width: 100%;
+        height: 100%;
+    }
+    .wrapper {
+        transform: rotate( 90deg);
+        transform-origin: bottom left;
+        position: absolute;
+        top: -100vw;
+        left: 0;
+        height: 100vw;
+        width: 99.9vh;
+    }
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .container canvas, .overlay {
+        position: absolute;
+    }
 }

@@ -20,12 +20,6 @@ let imagePaths = [
 
   "./img/tabasco.png",
 
-  "./img/start_screen.png",
-
-  "./img/game_over.png",
-
-  "./img/background.png",
-
   "./img/coin_0.png",
   "./img/coin_20.png",
   "./img/coin_40.png",
@@ -47,10 +41,6 @@ let imagePaths = [
   "./img/charakter/charakter_hurt_2.png",
   "./img/charakter/charakter_hurt_3.png",
 
-  "./img/charakter/charakter_hurt_1_left.png",
-  "./img/charakter/charakter_hurt_2_left.png",
-  "./img/charakter/charakter_hurt_3_left.png",
-
   "./img/charakter/charakter_inactive_1.png",
   "./img/charakter/charakter_inactive_2.png",
   "./img/charakter/charakter_inactive_3.png",
@@ -62,17 +52,6 @@ let imagePaths = [
   "./img/charakter/charakter_inactive_9.png",
   "./img/charakter/charakter_inactive_10.png",
 
-  "./img/charakter/charakter_inactive_1_left.png",
-  "./img/charakter/charakter_inactive_2_left.png",
-  "./img/charakter/charakter_inactive_3_left.png",
-  "./img/charakter/charakter_inactive_4_left.png",
-  "./img/charakter/charakter_inactive_5_left.png",
-  "./img/charakter/charakter_inactive_6_left.png",
-  "./img/charakter/charakter_inactive_7_left.png",
-  "./img/charakter/charakter_inactive_8_left.png",
-  "./img/charakter/charakter_inactive_9_left.png",
-  "./img/charakter/charakter_inactive_10_left.png",
-
   "./img/charakter/charakter_jump_1.png",
   "./img/charakter/charakter_jump_2.png",
   "./img/charakter/charakter_jump_3.png",
@@ -82,16 +61,6 @@ let imagePaths = [
   "./img/charakter/charakter_jump_7.png",
   "./img/charakter/charakter_jump_8.png",
   "./img/charakter/charakter_jump_9.png",
-
-  "./img/charakter/charakter_jump_1_left.png",
-  "./img/charakter/charakter_jump_2_left.png",
-  "./img/charakter/charakter_jump_3_left.png",
-  "./img/charakter/charakter_jump_4_left.png",
-  "./img/charakter/charakter_jump_5_left.png",
-  "./img/charakter/charakter_jump_6_left.png",
-  "./img/charakter/charakter_jump_7_left.png",
-  "./img/charakter/charakter_jump_8_left.png",
-  "./img/charakter/charakter_jump_9_left.png",
 
   "./img/charakter/charakter_sleep_1.png",
   "./img/charakter/charakter_sleep_2.png",
@@ -103,17 +72,6 @@ let imagePaths = [
   "./img/charakter/charakter_sleep_8.png",
   "./img/charakter/charakter_sleep_9.png",
   "./img/charakter/charakter_sleep_10.png",
-
-  "./img/charakter/charakter_sleep_1_left.png",
-  "./img/charakter/charakter_sleep_2_left.png",
-  "./img/charakter/charakter_sleep_3_left.png",
-  "./img/charakter/charakter_sleep_4_left.png",
-  "./img/charakter/charakter_sleep_5_left.png",
-  "./img/charakter/charakter_sleep_6_left.png",
-  "./img/charakter/charakter_sleep_7_left.png",
-  "./img/charakter/charakter_sleep_8_left.png",
-  "./img/charakter/charakter_sleep_9_left.png",
-  "./img/charakter/charakter_sleep_10_left.png",
 
   "./img/charakter/charakter_walkleft_1.png",
   "./img/charakter/charakter_walkleft_2.png",
@@ -137,15 +95,6 @@ let imagePaths = [
   "./img/chicken_boss/chicken_boss_caution/chicken_boss_caution_6.png",
   "./img/chicken_boss/chicken_boss_caution/chicken_boss_caution_7.png",
   "./img/chicken_boss/chicken_boss_caution/chicken_boss_caution_8.png",
-
-  "./img/chicken_boss/chicken_boss_attack/chicken_boss_attack_1.png",
-  "./img/chicken_boss/chicken_boss_attack/chicken_boss_attack_2.png",
-  "./img/chicken_boss/chicken_boss_attack/chicken_boss_attack_3.png",
-  "./img/chicken_boss/chicken_boss_attack/chicken_boss_attack_4.png",
-  "./img/chicken_boss/chicken_boss_attack/chicken_boss_attack_5.png",
-  "./img/chicken_boss/chicken_boss_attack/chicken_boss_attack_6.png",
-  "./img/chicken_boss/chicken_boss_attack/chicken_boss_attack_7.png",
-  "./img/chicken_boss/chicken_boss_attack/chicken_boss_attack_8.png",
 
   "./img/chicken_boss/chicken_boss_dead/chickenboss_dead_1.png",
   "./img/chicken_boss/chicken_boss_dead/chickenboss_dead_2.png",
@@ -187,6 +136,7 @@ let imageCharacter = [
   "./img/charakter/charakter_walkright_6.png",
 ];
 
+
 /**
 
 * Preload all images. This function should be executed before starting the game.
@@ -203,33 +153,23 @@ function preloadImages() {
   }
 }
 
-function initLoading_Game() {
+
+
+
+/**
+ * This funtion initialize all function which are of importance for the game
+ */
+function init() {
   preloadImages();
+
+
+  console.log(character_x);
 
   canvas = document.getElementById("canvas");
 
   ctx = canvas.getContext("2d");
 
-  lastKeyPressed = new Date().getTime();
-
-  draw();
-}
-
-/**
- * This function start the game
- */
-
-function startGame() {
-  start_screen = false;
-  initStart_Game();
-  document.getElementById("start-btn").classList.add("d-none");
-}
-
-/**
- * This funtion initialize all function which are of importance for the game
- */
-function initStart_Game() {
-  checkAnimation();
+  checkForRunning();
 
   yellowChicken_move();
 
@@ -239,7 +179,7 @@ function initStart_Game() {
 
   create_newChicken();
 
-  checkForCollision_new();
+  draw();
 
   listenForKeys();
 
@@ -247,14 +187,12 @@ function initStart_Game() {
 
   animatedJump();
 
-  animatedJumpLeft();
-
   calculateChickenYellowPosition();
 
   calculateChickenBrownPosition();
-
-  calculateChickenBossPosition();
 }
+
+
 
 /**
  * This function checks whether the figure collides with a yellow chicken
@@ -263,18 +201,15 @@ function checkChickenYellow() {
   setInterval(function () {
     for (let i = 0; i < chickens_1.length; i++) {
       if (
-        chickens_1[i].chickenyellow_x + bg_elements - 100 < character_x &&
-        chickens_1[i].chickenyellow_x + bg_elements - 20 > character_x
+        chickens_1[i].chickenyellow_x +bg_elements - 100 < character_x &&
+        chickens_1[i].chickenyellow_x +bg_elements - 20 > character_x
       ) {
         if (character_y > 90) {
           live_energy = live_energy - 2;
-          if (directionRight && !game_over && !isJumping) {
-              isHurt = true;
-              AUDIO_HURT.play();
-          }
-          if (directionLeft && !game_over && !isJumping_left) {
-            isHurt_left = true;
-            AUDIO_HURT.play();
+          isHurt = true;
+
+          if (charakterHurtIndex > 2) {
+            isHurt = false;
           }
         }
 
@@ -293,20 +228,15 @@ function checkChickenBrown() {
   setInterval(function () {
     for (let i = 0; i < chickens_2.length; i++) {
       if (
-        chickens_2[i].chickenbrown_x + bg_elements - 100 < character_x &&
-        chickens_2[i].chickenbrown_x + bg_elements - 40 > character_x
+        chickens_2[i].chickenbrown_x +bg_elements - 100 < character_x &&
+        chickens_2[i].chickenbrown_x +bg_elements - 40 > character_x
       ) {
         if (character_y > 90) {
           live_energy = live_energy - 2;
-          if (directionRight && !game_over && !isJumping) {
-
-              isHurt = true;
-              AUDIO_HURT.play();
-          }
-          if (directionLeft && !game_over && !isJumping_left) {
-            isHurt_left = true;
-            AUDIO_HURT.play();
-          }
+          isHurt = true;
+        }
+        if (charakterHurtIndex > 2) {
+          isHurt = false;
         }
 
         if (live_energy < 0) {
@@ -334,11 +264,7 @@ function checkBottle() {
     for (let i = 0; i < placedBottles.length; i++) {
       let bottle_x = placedBottles[i] + bg_elements;
 
-      if (
-        bottle_x - 60 < character_x &&
-        bottle_x + 60 > character_x &&
-        character_y > 90
-      ) {
+      if (bottle_x - 60 < character_x && bottle_x + 60 > character_x) {
         placedBottles.splice(i, 1);
         AUDIO_BOTTLE.play();
         collectedBottles++;
@@ -355,11 +281,7 @@ function checkLife() {
     for (let i = 0; i < placedLifes_x.length; i++) {
       let life_x = placedLifes_x[i] + bg_elements;
 
-      if (
-        life_x - 60 < character_x &&
-        life_x + 60 > character_x &&
-        character_y > 90
-      ) {
+      if (life_x - 30 < character_x && life_x + 30 > character_x) {
         placedLifes_x.splice(i, 1);
         AUDIO_HEART.play();
 
@@ -379,11 +301,7 @@ function checkCoins() {
     for (let i = 0; i < placedCoins_x.length; i++) {
       let coins_x = placedCoins_x[i] + bg_elements;
 
-      if (
-        coins_x - 40 < character_x &&
-        coins_x + 50 > character_x &&
-        character_y > 90
-      ) {
+      if (coins_x - 40 < character_x && coins_x + 50 > character_x) {
         placedCoins_x.splice(i, 1);
         AUDIO_COIN.play();
         collectedCoins++;
@@ -392,8 +310,9 @@ function checkCoins() {
   }, 100);
 }
 
+
 /**
- * This function checks whether the bottle collides with the boss Chicken
+ * This function checks whether the figure collides with the boss Chicken
  */
 function checkBoss() {
   setInterval(function () {
@@ -403,26 +322,9 @@ function checkBoss() {
     ) {
       if (final_boss_energy > 0) {
         finalBossenergy_decrease();
-          thrownBottle_x = 0;
-          thrownBottle_y = 0;
       } else if (bossDefeatedAt == 0) {
         finalBoss_dead();
       }
-    }
-  }, 100);
-}
-
-/**
- * This function checks whether the figure collides with the boss chicken
- */
-function checkBossPepe() {
-  setInterval(function () {
-    let newBoss_Position = BOSS_POSITION + bg_elements;
-    if (
-      newBoss_Position - 50 < character_x &&
-      newBoss_Position + 50 > character_x
-    ) {
-      liveEnergy_zero();
     }
   }, 100);
 }
@@ -433,14 +335,14 @@ function checkBossPepe() {
 function finalBossenergy_decrease() {
   final_boss_energy = final_boss_energy - 2;
 
-  isBossWalk = false;
-
   isBossHurt = true;
 
-  setTimeout(function () {
+  isBossCaution = false;
+
+  setInterval(function () {
     isBossHurt = false;
-    isBossAttack = true;
-  }, 5000);
+    isBossCaution = true;
+  }, 2000);
 
   AUDIO_GLASS.play();
 }
@@ -451,8 +353,7 @@ function finalBossenergy_decrease() {
 function finalBoss_dead() {
   bossDefeatedAt = new Date().getTime();
 
-  isBossHurt = false;
-  isBossAttack = false;
+  isBossCaution = false;
   isBossDead = true;
 
   setTimeout(function () {
@@ -476,7 +377,7 @@ function checkForCollision_new() {
 
   checkBoss();
 
-  checkBossPepe();
+  //checkBoss_Pepe();
 }
 
 /**
@@ -485,24 +386,24 @@ function checkForCollision_new() {
 function finishLevel() {
   AUDIO_CHICKEN.play();
 
-  setTimeout(function () {
-    game_finished = true;
+  setTimeout(function () {}, 500);
 
-    AUDIO_WIN.play();
-  }, 500);
+  game_finished = true;
+
+  AUDIO_WIN.play();
 }
 
 /**
  * This function create yellow chickens
  */
 function createChicken_Yellow() {
-  for (let i = 600; i < 14000; i = i + 500) {
+  for (let i = 600; i < 8000; i = i + 400) {
     chickens_1.push({
       chickenyellow_x: i,
       chickenyellow_y: 370,
       currentyellowChickenImage: "img/yellow_chicken_1.png",
       current_yellowchicken_index: 0,
-      speed: Math.random() + 30,
+      speed: 10 ,
     });
   }
 }
@@ -511,13 +412,13 @@ function createChicken_Yellow() {
  * This function create brown chickens
  */
 function createChicken_Brown() {
-  for (let i = 1200; i < 14000; i = i + 1000) {
+  for (let i = 1200; i < 8000; i = i + 800) {
     chickens_2.push({
       chickenbrown_x: i,
       chickenbrown_y: 360,
       currentbrownChickenImage: "img/brown_chicken_1.png",
       current_brownchicken_index: 0,
-      speed: Math.random() + 30,
+      speed: 10 ,
     });
   }
 }
@@ -557,15 +458,6 @@ function brownChicken_move() {
 }
 
 /**
- * This function show the walk animation from the boss
- */
-function bossWalk() {
-  let index = walkBossIndex % walkBoss.length;
-  currentBossWalkImage = walkBoss[index];
-  walkBossIndex = walkBossIndex + 1;
-}
-
-/**
  * This function show the caution animation from the boss
  */
 function bossCaution() {
@@ -584,15 +476,6 @@ function bossHurt() {
 }
 
 /**
- * This function show the attak animation from the boss
- */
-function bossAttack() {
-  let index = attackBossIndex % attackBoss.length;
-  currentBossAttackImage = attackBoss[index];
-  attackBossIndex = attackBossIndex + 1;
-}
-
-/**
  * This function show the dead animation from the boss
  */
 function bossDead() {
@@ -606,25 +489,22 @@ function bossDead() {
  */
 function bossChicken_move() {
   setInterval(function () {
-    if (isBossWalk) {
-      bossWalk();
-    } else if (isBossCaution) {
+    if (isBossCaution == true) {
       bossCaution();
-    } else if (isBossHurt) {
+    } else if (isBossHurt == true) {
       bossHurt();
-    } else if (isBossDead) {
+    } else if (isBossDead == true) {
       bossDead();
-    } else if (isBossAttack) {
-      bossAttack();
     }
-  }, 300);
+  }, 400);
 }
 
 /**
  * This function draw the base image for the yellow chicken
- * @param {image} base_image
+ * @param {image} base_image 
  */
-function baseImage_yellowChicken(base_image) {
+function baseImage_yellowChicken(base_image){
+
   ctx.drawImage(
     base_image,
     chickens_1[i].chickenyellow_x + bg_elements,
@@ -633,6 +513,7 @@ function baseImage_yellowChicken(base_image) {
     base_image.height * 0.25
   );
 }
+
 
 /**
  * This function draw the yellow chickens
@@ -643,23 +524,25 @@ function yellowChicken_animated() {
 
   if (base_image.complete) {
     for (i = 0; i < chickens_1.length; i++) {
-      baseImage_yellowChicken(base_image);
+     baseImage_yellowChicken(base_image);
     }
   }
 }
 
 /**
  * This function draw the base image for the brown chicken
- * @param {image} base_image
+ * @param {image} base_image 
  */
-function baseImage_brownChicken(base_image) {
-  ctx.drawImage(
-    base_image,
-    chickens_2[i].chickenbrown_x + bg_elements,
-    chickens_2[i].chickenbrown_y,
-    base_image.width * 0.25,
-    base_image.height * 0.25
-  );
+function baseImage_brownChicken(base_image){
+
+   ctx.drawImage(
+     base_image,
+     chickens_2[i].chickenbrown_x + bg_elements,
+     chickens_2[i].chickenbrown_y,
+     base_image.width * 0.25,
+     base_image.height * 0.25
+   );
+
 }
 
 /**
@@ -675,7 +558,7 @@ function brownChicken_animated() {
 
   if (base_image.complete) {
     for (i = 0; i < chickens_2.length; i++) {
-      baseImage_brownChicken(base_image);
+     baseImage_brownChicken(base_image);
     }
   }
 }
@@ -704,13 +587,6 @@ function calculateChickenBrownPosition() {
   }, 500);
 }
 
-function calculateChickenBossPosition() {
-  setInterval(function () {
-    let speedBoss = 50;
-    BOSS_POSITION = BOSS_POSITION - speedBoss;
-  }, 500);
-}
-
 /**
  * This function activate the rotate bottle animation
  */
@@ -730,42 +606,15 @@ function moveBottle() {
  * This function activate the jump animation from the character
  */
 function animatedJump() {
-  let index;
   setInterval(function () {
-    if (isJumping) {
-      if (index == 8) {
-        isJumping = false;
-        index = 0;
-        characterJumpIndex = 0;
-      }
-      index = characterJumpIndex % jumpCharacter.length;
+    if (isJumping && isMovingRight) {
+      let index = characterJumpIndex % jumpCharacter.length;
 
       currentJumpImage = jumpCharacter[index];
 
       characterJumpIndex = characterJumpIndex + 1;
     }
-  }, 150);
-}
-
-/**
- * This function activate the jump animation from the character on the left side
- */
-function animatedJumpLeft() {
-  let index;
-  setInterval(function () {
-    if (index == 8) {
-      isJumping_left = false;
-      index = 0;
-      characterJumpIndex_left = 0;
-    }
-    if (isJumping_left) {
-      index = characterJumpIndex_left % jumpCharacter_left.length;
-
-      currentJumpleftImage = jumpCharacter_left[index];
-
-      characterJumpIndex_left = characterJumpIndex_left + 1;
-    }
-  }, 150);
+  }, 350);
 }
 
 /**
@@ -773,10 +622,9 @@ function animatedJumpLeft() {
  */
 function movingRight() {
   AUDIO_RUNNING.play();
+ 
 
-  directionRight = true;
-
-  directionLeft = false;
+  isInactive = false;
 
   let index = characterGraphicIndex % characterGraphicsRight.length;
 
@@ -791,9 +639,7 @@ function movingRight() {
 function movingLeft() {
   AUDIO_RUNNING.play();
 
-  directionRight = false;
-
-  directionLeft = true;
+  isInactive = false;
 
   let index = characterGraphicIndex % characterGraphicsLeft.length;
 
@@ -803,118 +649,30 @@ function movingLeft() {
 }
 
 /**
- * This function checks whether the figure is moving right
+ * This function checks whether the figure is running or not
  */
-function checkMovingRight() {
+function checkForRunning() {
   setInterval(function () {
     if (isMovingRight) {
       movingRight();
-      isSleep = false;
-      isInactive = false;
-      isSleep_left = false;
-      isInactive_left = false;
     }
-  }, 300);
-}
 
-/**
- * This function checks whether the figure is moving left
- */
-function checkMovingLeft() {
-  setInterval(function () {
     if (isMovingLeft) {
       movingLeft();
-      isSleep = false;
-      isInactive = false;
-      isSleep_left = false;
-      isInactive_left = false;
     }
-  }, 300);
-}
 
-/**
- * This function checks whether the figure is hurting
- */
-function checkHurting() {
-  setInterval(function () {
-    if (isHurt && directionRight) {
+    if (isHurt) {
       hurt();
 
+      setTimeout(function () {
+        isHurt = false;
+      }, 1500);
     }
 
-    if (isHurt_left && directionLeft) {
-      hurtLeft();
-    }
-  }, 50);
-}
-
-/**
- * This function checks whether the figure is not moving
- */
-function checkNotMoving() {
-  setInterval(function () {
     if (!isMovingRight && !isMovingLeft) {
       AUDIO_RUNNING.pause();
     }
-  }, 300);
-}
-
-/**
- * This function checks whether the figure is inactive
- */
-function checkInactive() {
-  setInterval(function () {
-    let timePassed = new Date().getTime() - lastKeyPressed;
-
-    if (directionRight && !isJumping  && lastKeyPressed != 0 && timePassed > 500) {
-      isInactive = true;
-        inactive();
-    }
-
-    if (directionRight && !isJumping && lastKeyPressed != 0 && timePassed > 6000) {
-      isInactive = false;
-      isSleep = true;
-    }
-
-    if (directionLeft && !isJumping_left && lastKeyPressed != 0 && timePassed > 500) {
-      isInactive_left = true;
-        inactiveLeft();
-
-      if (directionLeft && !isJumping_left && lastKeyPressed != 0 && timePassed > 6000) {
-        isInactive_left = false;
-        isSleep_left = true;
-      }
-    }
-  }, 300);
-}
-
-/**
- * This function checks whether the figure is sleeping
- */
-function checkSleep() {
-  setInterval(function () {
-    if (isSleep && directionRight) {
-      sleep();
-    }
-
-    if (isSleep_left && directionLeft) {
-      sleepLeft();
-    }
-  }, 300);
-}
-
-
-
-/**
- * This function checks whether a certain animation is carried out from the character
- */
-function checkAnimation() {
-  checkMovingRight();
-  checkMovingLeft();
-  checkHurting();
-  checkNotMoving();
-  checkInactive();
-  checkSleep();
+  }, 100);
 }
 
 /**
@@ -923,7 +681,7 @@ function checkAnimation() {
 function draw() {
   drawBackground();
 
-  if (game_finished && !game_over) {
+  if (game_finished) {
     drawFinalScreen();
   } else {
     if (!start_screen && !game_over) {
@@ -965,27 +723,7 @@ function drawFinalScreen() {
   ctx.fillText("You Win !", 250, 275);
 }
 
-function baseImage_boss(base_image, chicken_x, chicken_y) {
-  if (!game_over) {
-    ctx.drawImage(
-      base_image,
-      chicken_x +bg_elements,
-      chicken_y,
-      base_image.width * 0.23,
-      base_image.height * 0.25
-    );
-  }
 
-  if (game_over) {
-    ctx.drawImage(
-      base_image,
-      chicken_x + bg_elements,
-      chicken_y,
-      base_image.width * 0,
-      base_image.height * 0
-    );
-  }
-}
 
 /**
  * This function draw the boss chicken
@@ -993,39 +731,31 @@ function baseImage_boss(base_image, chicken_x, chicken_y) {
 function drawFinalBoss() {
   let chicken_x = BOSS_POSITION;
 
-  let chicken_y = 140;
+  let chicken_y = 160;
 
-  let base_image = new Image();
-
-  base_image.src = currentBossWalkImage;
+  let bossImage;
 
   if (bossDefeatedAt > 0) {
-    let timePassed = new Date().getTime() - bossDefeatedAt;
+   let timePassed = new Date().getTime() - bossDefeatedAt;
 
-    chicken_x = chicken_x + timePassed * 0.7;
+   chicken_x = chicken_x + timePassed * 0.7;
 
-    chicken_y = chicken_y - timePassed * 0.3;
+   chicken_y = chicken_y - timePassed * 0.3;
   }
 
   if (isBossCaution) {
-    base_image.src = currentBossCautionImage;
+    bossImage = currentBossCautionImage;
   }
 
   if (isBossHurt) {
-    base_image.src = currentBossHurtImage;
+    bossImage = currentBossHurtImage;
   }
 
   if (isBossDead) {
-    base_image.src = currentBossDeadImage;
+    bossImage = currentBossDeadImage;
   }
 
-  if (isBossAttack) {
-    base_image.src = currentBossAttackImage;
-  }
-
-  if (base_image.complete) {
-    baseImage_boss(base_image, chicken_x, chicken_y);
-  }
+  addBackgroundObject(bossImage, chicken_x, chicken_y, 0.23, 1);
 }
 
 /**
@@ -1046,7 +776,7 @@ function baseImage_Bottle(base_image) {
  * This function make the throwing ability for the tabasco bottle
  */
 function drawThrowBottle() {
-  if (bottleThrowTime && directionRight) {
+  if (bottleThrowTime) {
     let timePassed = new Date().getTime() - bottleThrowTime;
     let gravity = Math.pow(9.81, timePassed / 300);
 
@@ -1234,6 +964,7 @@ function draw_bosslifeDisplay() {
 function drawEndbossdistance() {
   ctx.font = "18px Lexend Peta ";
   ctx.fillText("Endboss: " + (BOSS_POSITION + bg_elements) + "m", 620, 40);
+
 }
 
 /**
@@ -1276,27 +1007,8 @@ function hurt() {
 
   charakterHurtIndex = charakterHurtIndex + 1;
 
-  if (index == 2) {
-    isHurt = false;
-    index = 0;
+  if (charakterHurtIndex > 2) {
     charakterHurtIndex = 0;
-  }
-}
-
-/**
- * This function change the picture when the figure is hurting on the left side
- */
-function hurtLeft() {
-  let index = charakterHurtIndex_left % hurtCharakter_left.length;
-
-  currenthurtleftCharakterImage = hurtCharakter_left[index];
-
-  charakterHurtIndex_left = charakterHurtIndex_left + 1;
-
-  if (index == 2) {
-    isHurt_left = false;
-    index = 0;
-    charakterHurtIndex_left = 0;
   }
 }
 
@@ -1304,53 +1016,11 @@ function hurtLeft() {
  * This function change the picture when the figure is inactive
  */
 function inactive() {
-
-  
-  let index;
-
-  index = charakterInactiveIndex % inactiveCharakter.length;
+  let index = charakterInactiveIndex % inactiveCharakter.length;
 
   currentinactiveCharakterImage = inactiveCharakter[index];
 
   charakterInactiveIndex = charakterInactiveIndex + 1;
-
-
-}
-
-/**
- * This function change the picture when the figure is inactive on the left side
- */
-function inactiveLeft() {
-  let index = charakterInactiveIndex_left % inactiveCharakter_left.length;
-
-  currentinactiveleftCharakterImage = inactiveCharakter_left[index];
-
-  charakterInactiveIndex_left = charakterInactiveIndex_left + 1;
-}
-
-/**
- * This function change the picture when the figure is sleeping
- */
-function sleep() {
-  let index;
-  
-  index = charakterSleepIndex % sleepCharakter.length;
-
-  currentsleepCharakterImage = sleepCharakter[index];
-
-  charakterSleepIndex = charakterSleepIndex + 1;
-
-}
-
-/**
- * This function change the picture when the figure is sleeping on the left side
- */
-function sleepLeft() {
-  let index = charakterSleepIndex_left % sleepCharakter_left.length;
-
-  currentsleepleftCharakterImage = sleepCharakter_left[index];
-
-  charakterSleepIndex_left = charakterSleepIndex_left + 1;
 }
 
 /**
@@ -1376,18 +1046,10 @@ function updateCharacter() {
 
   let timePassedSinceJump = new Date().getTime() - lastJumpStarted;
 
-  if (isHurt) {
+  if (isHurt == true) {
     base_image.src = currenthurtCharakterImage;
-  } else if (isHurt_left) {
-    base_image.src = currenthurtleftCharakterImage;
-  } else if (isInactive) {
+  } else if (isInactive == true) {
     base_image.src = currentinactiveCharakterImage;
-  } else if (isInactive_left) {
-    base_image.src = currentinactiveleftCharakterImage;
-  } else if (isSleep) {
-    base_image.src = currentsleepCharakterImage;
-  } else if (isSleep_left) {
-    base_image.src = currentsleepleftCharakterImage;
   } else if (timePassedSinceJump < JUMP_TIME) {
     character_y = character_y - 12.5;
   } else {
@@ -1395,13 +1057,8 @@ function updateCharacter() {
 
     if (character_y < 135) {
       character_y = character_y + 4;
-      if (directionRight) {
-        base_image.src = currentJumpImage;
-      }
 
-      if (directionLeft) {
-        base_image.src = currentJumpleftImage;
-      }
+      base_image.src = currentJumpImage;
     }
   }
 
@@ -1422,21 +1079,28 @@ function drawBackground() {
 }
 
 /**
- * This function start the game over animation 
+ * This function start the game over animation if the fullscreen mode is not activate
  */
-function gameOver() {
+function gameOver_notFullscreen() {
   addBackgroundObject("img/game_over.png", -bg_elements, 0, 0.45, 1);
   document.getElementById("restart-btn").classList.remove("d-none");
   AUDIO_GAME_OVER.play();
 }
 
-
+/**
+ * This function start the game over animation if the fullscreen mode is activate
+ */
+function gameOver_Fullscreen() {
+  addBackgroundObject("img/game_over.png", -bg_elements, -100, 0.67, 1);
+  document.getElementById("restart-btn").classList.remove("d-none");
+  AUDIO_GAME_OVER.play();
+}
 
 /**
  * This function draw the ground in the game
  */
 function drawGround() {
-  if (!start_screen && !game_over && bg_elements > -14000) {
+  if (!start_screen && !game_over) {
     if (isMovingRight) {
       bg_elements = bg_elements - GAME_SPEED;
     }
@@ -1446,14 +1110,21 @@ function drawGround() {
     }
   }
 
-  if (start_screen ) {
+  if (start_screen && !fullscreen) {
     addBackgroundObject("img/start_screen.png", -bg_elements, 0, 0.45, 1);
   }
 
-  if (game_over) {
-    gameOver();
+  if (start_screen && fullscreen) {
+    addBackgroundObject("img/start_screen.png", -bg_elements, 0, 0.65, 1);
   }
 
+  if (game_over && !fullscreen) {
+    gameOver_notFullscreen();
+  }
+
+  if (game_over && fullscreen) {
+    gameOver_Fullscreen();
+  }
 
   if (!start_screen && !game_over) {
     addBackground();
@@ -1466,11 +1137,11 @@ function drawGround() {
 function addBackground() {
   addBackgroundObject("img/background.png", -1725, 0, 0.45, 1);
 
-  addBackgroundObject("img/background.png", 0, 0, 0.45, 1);
+  addBackgroundObject("img/background.png", 0,0, 0.45, 1);
 
   addBackgroundObject("img/background.png", 1725, 0, 0.45, 1);
 
-  addBackgroundObject("img/background.png", 3450, 0, 0.45, 1);
+  addBackgroundObject("img/background.png", 3450 , 0, 0.45, 1);
 
   addBackgroundObject("img/background.png", 5175, 0, 0.45, 1);
 
@@ -1531,33 +1202,19 @@ function keydownCollectedBottles() {
   isThrowing = true;
   let timePassed = new Date().getTime() - bottleThrowTime;
 
-  if (timePassed > 1000 && directionRight ) {
+  if (timePassed > 1000) {
     AUDIO_THROW.play();
 
     collectedBottles--;
     bottleThrowTime = new Date().getTime();
-
   }
-
 }
 
 /**
  * This function activate the jump, when the right key is pressed
  */
 function keydownJump() {
-  if (directionRight) {
-    isJumping = true;
-    isJumping_left = false;
-    isInactive = false;
-    isSleep = false;
-  }
-
-  if (directionLeft) {
-    isJumping_left = true;
-    isJumping = false;
-    isInactive_left = false;
-    isSleep_left = false;
-  }
+  isJumping = true;
 
   AUDIO_JUMP.play();
 
@@ -1573,12 +1230,10 @@ function keydown() {
 
     if (k == "ArrowRight") {
       isMovingRight = true;
-      lastKeyPressed = 0;
     }
 
     if (k == "ArrowLeft") {
       isMovingLeft = true;
-      lastKeyPressed = 0;
     }
 
     if (k == "d" && collectedBottles > 0) {
@@ -1589,7 +1244,6 @@ function keydown() {
 
     if (e.code == "Space" && timePassedSinceJump > JUMP_TIME * 4) {
       keydownJump();
-      lastKeyPressed = 0;
     }
   });
 }
@@ -1603,20 +1257,10 @@ function keyup() {
 
     if (k == "ArrowRight") {
       isMovingRight = false;
-      lastKeyPressed = new Date().getTime();
     }
 
     if (k == "ArrowLeft") {
       isMovingLeft = false;
-      lastKeyPressed = new Date().getTime();
-    }
-
-
-    let timePassedSinceJump = new Date().getTime() - lastJumpStarted;
-
-
-    if (e.code == "Space" && timePassedSinceJump > JUMP_TIME * 4) {
-      isJumping = false;
     }
   });
 }

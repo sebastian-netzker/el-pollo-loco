@@ -1,4 +1,32 @@
-let imagePaths = [
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: game.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: game.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>let imagePaths = [
   "./img/tabasco_broken_1.png",
   "./img/tabasco_broken_2.png",
   "./img/tabasco_broken_3.png",
@@ -194,7 +222,7 @@ let imageCharacter = [
 
 */
 function preloadImages() {
-  for (let i = 0; i < imagePaths.length; i++) {
+  for (let i = 0; i &lt; imagePaths.length; i++) {
     let image = new Image();
 
     image.src = imagePaths[i];
@@ -261,24 +289,24 @@ function initStart_Game() {
  */
 function checkChickenYellow() {
   setInterval(function () {
-    for (let i = 0; i < chickens_1.length; i++) {
+    for (let i = 0; i &lt; chickens_1.length; i++) {
       if (
-        chickens_1[i].chickenyellow_x + bg_elements - 100 < character_x &&
+        chickens_1[i].chickenyellow_x + bg_elements - 100 &lt; character_x &amp;&amp;
         chickens_1[i].chickenyellow_x + bg_elements - 20 > character_x
       ) {
         if (character_y > 90) {
           live_energy = live_energy - 2;
-          if (directionRight && !game_over && !isJumping) {
+          if (directionRight &amp;&amp; !game_over &amp;&amp; !isJumping) {
               isHurt = true;
               AUDIO_HURT.play();
           }
-          if (directionLeft && !game_over && !isJumping_left) {
+          if (directionLeft &amp;&amp; !game_over &amp;&amp; !isJumping_left) {
             isHurt_left = true;
             AUDIO_HURT.play();
           }
         }
 
-        if (live_energy < 0) {
+        if (live_energy &lt; 0) {
           liveEnergy_zero();
         }
       }
@@ -291,25 +319,25 @@ function checkChickenYellow() {
  */
 function checkChickenBrown() {
   setInterval(function () {
-    for (let i = 0; i < chickens_2.length; i++) {
+    for (let i = 0; i &lt; chickens_2.length; i++) {
       if (
-        chickens_2[i].chickenbrown_x + bg_elements - 100 < character_x &&
+        chickens_2[i].chickenbrown_x + bg_elements - 100 &lt; character_x &amp;&amp;
         chickens_2[i].chickenbrown_x + bg_elements - 40 > character_x
       ) {
         if (character_y > 90) {
           live_energy = live_energy - 2;
-          if (directionRight && !game_over && !isJumping) {
+          if (directionRight &amp;&amp; !game_over &amp;&amp; !isJumping) {
 
               isHurt = true;
               AUDIO_HURT.play();
           }
-          if (directionLeft && !game_over && !isJumping_left) {
+          if (directionLeft &amp;&amp; !game_over &amp;&amp; !isJumping_left) {
             isHurt_left = true;
             AUDIO_HURT.play();
           }
         }
 
-        if (live_energy < 0) {
+        if (live_energy &lt; 0) {
           liveEnergy_zero();
         }
       }
@@ -331,12 +359,12 @@ function liveEnergy_zero() {
  */
 function checkBottle() {
   setInterval(function () {
-    for (let i = 0; i < placedBottles.length; i++) {
+    for (let i = 0; i &lt; placedBottles.length; i++) {
       let bottle_x = placedBottles[i] + bg_elements;
 
       if (
-        bottle_x - 60 < character_x &&
-        bottle_x + 60 > character_x &&
+        bottle_x - 60 &lt; character_x &amp;&amp;
+        bottle_x + 60 > character_x &amp;&amp;
         character_y > 90
       ) {
         placedBottles.splice(i, 1);
@@ -352,18 +380,18 @@ function checkBottle() {
  */
 function checkLife() {
   setInterval(function () {
-    for (let i = 0; i < placedLifes_x.length; i++) {
+    for (let i = 0; i &lt; placedLifes_x.length; i++) {
       let life_x = placedLifes_x[i] + bg_elements;
 
       if (
-        life_x - 60 < character_x &&
-        life_x + 60 > character_x &&
+        life_x - 60 &lt; character_x &amp;&amp;
+        life_x + 60 > character_x &amp;&amp;
         character_y > 90
       ) {
         placedLifes_x.splice(i, 1);
         AUDIO_HEART.play();
 
-        if (live_energy >= 0 && live_energy < 90) {
+        if (live_energy >= 0 &amp;&amp; live_energy &lt; 90) {
           live_energy = live_energy + 10;
         }
       }
@@ -376,12 +404,12 @@ function checkLife() {
  */
 function checkCoins() {
   setInterval(function () {
-    for (let i = 0; i < placedCoins_x.length; i++) {
+    for (let i = 0; i &lt; placedCoins_x.length; i++) {
       let coins_x = placedCoins_x[i] + bg_elements;
 
       if (
-        coins_x - 40 < character_x &&
-        coins_x + 50 > character_x &&
+        coins_x - 40 &lt; character_x &amp;&amp;
+        coins_x + 50 > character_x &amp;&amp;
         character_y > 90
       ) {
         placedCoins_x.splice(i, 1);
@@ -398,8 +426,8 @@ function checkCoins() {
 function checkBoss() {
   setInterval(function () {
     if (
-      thrownBottle_x > BOSS_POSITION + bg_elements - 100 &&
-      thrownBottle_x < BOSS_POSITION + bg_elements + 100
+      thrownBottle_x > BOSS_POSITION + bg_elements - 100 &amp;&amp;
+      thrownBottle_x &lt; BOSS_POSITION + bg_elements + 100
     ) {
       if (final_boss_energy > 0) {
         finalBossenergy_decrease();
@@ -419,7 +447,7 @@ function checkBossPepe() {
   setInterval(function () {
     let newBoss_Position = BOSS_POSITION + bg_elements;
     if (
-      newBoss_Position - 50 < character_x &&
+      newBoss_Position - 50 &lt; character_x &amp;&amp;
       newBoss_Position + 50 > character_x
     ) {
       liveEnergy_zero();
@@ -496,7 +524,7 @@ function finishLevel() {
  * This function create yellow chickens
  */
 function createChicken_Yellow() {
-  for (let i = 600; i < 14000; i = i + 500) {
+  for (let i = 600; i &lt; 14000; i = i + 500) {
     chickens_1.push({
       chickenyellow_x: i,
       chickenyellow_y: 370,
@@ -511,7 +539,7 @@ function createChicken_Yellow() {
  * This function create brown chickens
  */
 function createChicken_Brown() {
-  for (let i = 1200; i < 14000; i = i + 1000) {
+  for (let i = 1200; i &lt; 14000; i = i + 1000) {
     chickens_2.push({
       chickenbrown_x: i,
       chickenbrown_y: 360,
@@ -642,7 +670,7 @@ function yellowChicken_animated() {
   base_image.src = currentyellowChickenImage;
 
   if (base_image.complete) {
-    for (i = 0; i < chickens_1.length; i++) {
+    for (i = 0; i &lt; chickens_1.length; i++) {
       baseImage_yellowChicken(base_image);
     }
   }
@@ -674,7 +702,7 @@ function brownChicken_animated() {
   }
 
   if (base_image.complete) {
-    for (i = 0; i < chickens_2.length; i++) {
+    for (i = 0; i &lt; chickens_2.length; i++) {
       baseImage_brownChicken(base_image);
     }
   }
@@ -685,7 +713,7 @@ function brownChicken_animated() {
  */
 function calculateChickenYellowPosition() {
   setInterval(function () {
-    for (i = 0; i < chickens_1.length; i++) {
+    for (i = 0; i &lt; chickens_1.length; i++) {
       chickens_1[i].chickenyellow_x =
         chickens_1[i].chickenyellow_x - chickens_1[i].speed;
     }
@@ -697,7 +725,7 @@ function calculateChickenYellowPosition() {
  */
 function calculateChickenBrownPosition() {
   setInterval(function () {
-    for (i = 0; i < chickens_2.length; i++) {
+    for (i = 0; i &lt; chickens_2.length; i++) {
       chickens_2[i].chickenbrown_x =
         chickens_2[i].chickenbrown_x - chickens_2[i].speed;
     }
@@ -837,12 +865,12 @@ function checkMovingLeft() {
  */
 function checkHurting() {
   setInterval(function () {
-    if (isHurt && directionRight) {
+    if (isHurt &amp;&amp; directionRight) {
       hurt();
 
     }
 
-    if (isHurt_left && directionLeft) {
+    if (isHurt_left &amp;&amp; directionLeft) {
       hurtLeft();
     }
   }, 50);
@@ -853,7 +881,7 @@ function checkHurting() {
  */
 function checkNotMoving() {
   setInterval(function () {
-    if (!isMovingRight && !isMovingLeft) {
+    if (!isMovingRight &amp;&amp; !isMovingLeft) {
       AUDIO_RUNNING.pause();
     }
   }, 300);
@@ -866,21 +894,21 @@ function checkInactive() {
   setInterval(function () {
     let timePassed = new Date().getTime() - lastKeyPressed;
 
-    if (directionRight && !isJumping  && lastKeyPressed != 0 && timePassed > 500) {
+    if (directionRight &amp;&amp; !isJumping  &amp;&amp; lastKeyPressed != 0 &amp;&amp; timePassed > 500) {
       isInactive = true;
         inactive();
     }
 
-    if (directionRight && !isJumping && lastKeyPressed != 0 && timePassed > 6000) {
+    if (directionRight &amp;&amp; !isJumping &amp;&amp; lastKeyPressed != 0 &amp;&amp; timePassed > 6000) {
       isInactive = false;
       isSleep = true;
     }
 
-    if (directionLeft && !isJumping_left && lastKeyPressed != 0 && timePassed > 500) {
+    if (directionLeft &amp;&amp; !isJumping_left &amp;&amp; lastKeyPressed != 0 &amp;&amp; timePassed > 500) {
       isInactive_left = true;
         inactiveLeft();
 
-      if (directionLeft && !isJumping_left && lastKeyPressed != 0 && timePassed > 6000) {
+      if (directionLeft &amp;&amp; !isJumping_left &amp;&amp; lastKeyPressed != 0 &amp;&amp; timePassed > 6000) {
         isInactive_left = false;
         isSleep_left = true;
       }
@@ -893,11 +921,11 @@ function checkInactive() {
  */
 function checkSleep() {
   setInterval(function () {
-    if (isSleep && directionRight) {
+    if (isSleep &amp;&amp; directionRight) {
       sleep();
     }
 
-    if (isSleep_left && directionLeft) {
+    if (isSleep_left &amp;&amp; directionLeft) {
       sleepLeft();
     }
   }, 300);
@@ -923,10 +951,10 @@ function checkAnimation() {
 function draw() {
   drawBackground();
 
-  if (game_finished && !game_over) {
+  if (game_finished &amp;&amp; !game_over) {
     drawFinalScreen();
   } else {
-    if (!start_screen && !game_over) {
+    if (!start_screen &amp;&amp; !game_over) {
       updateCharacter();
 
       yellowChicken_animated();
@@ -1046,7 +1074,7 @@ function baseImage_Bottle(base_image) {
  * This function make the throwing ability for the tabasco bottle
  */
 function drawThrowBottle() {
-  if (bottleThrowTime && directionRight) {
+  if (bottleThrowTime &amp;&amp; directionRight) {
     let timePassed = new Date().getTime() - bottleThrowTime;
     let gravity = Math.pow(9.81, timePassed / 300);
 
@@ -1083,15 +1111,15 @@ function baseImage_tabascoDisplay(base_image) {
 function draw_tabascoDisplay() {
   let base_image = new Image();
 
-  if (collectedBottles >= 0 && collectedBottles < 10) {
+  if (collectedBottles >= 0 &amp;&amp; collectedBottles &lt; 10) {
     base_image.src = "img/tabasco_0.png";
-  } else if (collectedBottles >= 10 && collectedBottles < 20) {
+  } else if (collectedBottles >= 10 &amp;&amp; collectedBottles &lt; 20) {
     base_image.src = "img/tabasco_20.png";
-  } else if (collectedBottles >= 20 && collectedBottles < 30) {
+  } else if (collectedBottles >= 20 &amp;&amp; collectedBottles &lt; 30) {
     base_image.src = "img/tabasco_40.png";
-  } else if (collectedBottles >= 30 && collectedBottles < 40) {
+  } else if (collectedBottles >= 30 &amp;&amp; collectedBottles &lt; 40) {
     base_image.src = "img/tabasco_60.png";
-  } else if (collectedBottles >= 40 && collectedBottles < 50) {
+  } else if (collectedBottles >= 40 &amp;&amp; collectedBottles &lt; 50) {
     base_image.src = "img/tabasco_80.png";
   } else if (collectedBottles == 50) {
     base_image.src = "img/tabasco_100.png";
@@ -1124,15 +1152,15 @@ function baseImage_coinDisplay(base_image) {
 function draw_coinDisplay() {
   let base_image = new Image();
 
-  if (collectedCoins >= 0 && collectedCoins < 10) {
+  if (collectedCoins >= 0 &amp;&amp; collectedCoins &lt; 10) {
     base_image.src = "img/coin_0.png";
-  } else if (collectedCoins >= 10 && collectedCoins < 20) {
+  } else if (collectedCoins >= 10 &amp;&amp; collectedCoins &lt; 20) {
     base_image.src = "img/coin_20.png";
-  } else if (collectedCoins >= 20 && collectedCoins < 30) {
+  } else if (collectedCoins >= 20 &amp;&amp; collectedCoins &lt; 30) {
     base_image.src = "img/coin_40.png";
-  } else if (collectedCoins >= 30 && collectedCoins < 40) {
+  } else if (collectedCoins >= 30 &amp;&amp; collectedCoins &lt; 40) {
     base_image.src = "img/coin_60.png";
-  } else if (collectedCoins >= 40 && collectedCoins < 50) {
+  } else if (collectedCoins >= 40 &amp;&amp; collectedCoins &lt; 50) {
     base_image.src = "img/coin_80.png";
   } else if (collectedCoins == 50) {
     base_image.src = "img/coin_100.png";
@@ -1166,15 +1194,15 @@ function baseImage_lifeDisplay(base_image) {
 function draw_lifeDisplay() {
   let base_image = new Image();
 
-  if (live_energy <= 100 && live_energy > 80) {
+  if (live_energy &lt;= 100 &amp;&amp; live_energy > 80) {
     base_image.src = "img/life_100.png";
-  } else if (live_energy <= 80 && live_energy > 60) {
+  } else if (live_energy &lt;= 80 &amp;&amp; live_energy > 60) {
     base_image.src = "img/life_80.png";
-  } else if (live_energy <= 60 && live_energy > 40) {
+  } else if (live_energy &lt;= 60 &amp;&amp; live_energy > 40) {
     base_image.src = "img/life_60.png";
-  } else if (live_energy <= 40 && live_energy > 20) {
+  } else if (live_energy &lt;= 40 &amp;&amp; live_energy > 20) {
     base_image.src = "img/life_40.png";
-  } else if (live_energy <= 20 && live_energy > 0) {
+  } else if (live_energy &lt;= 20 &amp;&amp; live_energy > 0) {
     base_image.src = "img/life_20.png";
   } else if (live_energy == 0) {
     base_image.src = "img/life_0.png";
@@ -1207,15 +1235,15 @@ function baseImage_bosslifeDisplay(base_image) {
 function draw_bosslifeDisplay() {
   let base_image = new Image();
 
-  if (final_boss_energy <= 100 && final_boss_energy > 80) {
+  if (final_boss_energy &lt;= 100 &amp;&amp; final_boss_energy > 80) {
     base_image.src = IMGS.chicken_boss.life[5];
-  } else if (final_boss_energy <= 80 && final_boss_energy > 60) {
+  } else if (final_boss_energy &lt;= 80 &amp;&amp; final_boss_energy > 60) {
     base_image.src = IMGS.chicken_boss.life[4];
-  } else if (final_boss_energy <= 60 && final_boss_energy > 40) {
+  } else if (final_boss_energy &lt;= 60 &amp;&amp; final_boss_energy > 40) {
     base_image.src = IMGS.chicken_boss.life[3];
-  } else if (final_boss_energy <= 40 && final_boss_energy > 20) {
+  } else if (final_boss_energy &lt;= 40 &amp;&amp; final_boss_energy > 20) {
     base_image.src = IMGS.chicken_boss.life[2];
-  } else if (final_boss_energy <= 20 && final_boss_energy > 0) {
+  } else if (final_boss_energy &lt;= 20 &amp;&amp; final_boss_energy > 0) {
     base_image.src = IMGS.chicken_boss.life[1];
   } else if (final_boss_energy == 0) {
     base_image.src = IMGS.chicken_boss.life[0];
@@ -1240,7 +1268,7 @@ function drawEndbossdistance() {
  * This function draw the bottles, which the figure can collect
  */
 function drawBottles() {
-  for (let i = 0; i < placedBottles.length; i++) {
+  for (let i = 0; i &lt; placedBottles.length; i++) {
     let bottle_x = placedBottles[i];
     addBackgroundObject("img/tabasco.png", bottle_x, 340, 0.25, 1);
   }
@@ -1250,7 +1278,7 @@ function drawBottles() {
  * This function draw the coins, which the figure can collect
  */
 function drawCoins() {
-  for (let i = 0; i < placedCoins_x.length; i++) {
+  for (let i = 0; i &lt; placedCoins_x.length; i++) {
     let coin_x = placedCoins_x[i];
     addBackgroundObject("img/coin_small.png", coin_x, 290, 0.4, 1);
   }
@@ -1260,7 +1288,7 @@ function drawCoins() {
  * This function draw the lifes, which the figure can collect
  */
 function drawLifes() {
-  for (let i = 0; i < placedLifes_x.length; i++) {
+  for (let i = 0; i &lt; placedLifes_x.length; i++) {
     let life_x = placedLifes_x[i];
     addBackgroundObject("img/life_symbol.png", life_x, 290, 0.4, 1);
   }
@@ -1388,12 +1416,12 @@ function updateCharacter() {
     base_image.src = currentsleepCharakterImage;
   } else if (isSleep_left) {
     base_image.src = currentsleepleftCharakterImage;
-  } else if (timePassedSinceJump < JUMP_TIME) {
+  } else if (timePassedSinceJump &lt; JUMP_TIME) {
     character_y = character_y - 12.5;
   } else {
     // Check falling
 
-    if (character_y < 135) {
+    if (character_y &lt; 135) {
       character_y = character_y + 4;
       if (directionRight) {
         base_image.src = currentJumpImage;
@@ -1436,12 +1464,12 @@ function gameOver() {
  * This function draw the ground in the game
  */
 function drawGround() {
-  if (!start_screen && !game_over && bg_elements > -14000) {
+  if (!start_screen &amp;&amp; !game_over &amp;&amp; bg_elements > -14000) {
     if (isMovingRight) {
       bg_elements = bg_elements - GAME_SPEED;
     }
 
-    if (isMovingLeft && bg_elements < 500) {
+    if (isMovingLeft &amp;&amp; bg_elements &lt; 500) {
       bg_elements = bg_elements + GAME_SPEED;
     }
   }
@@ -1455,7 +1483,7 @@ function drawGround() {
   }
 
 
-  if (!start_screen && !game_over) {
+  if (!start_screen &amp;&amp; !game_over) {
     addBackground();
   }
 }
@@ -1531,7 +1559,7 @@ function keydownCollectedBottles() {
   isThrowing = true;
   let timePassed = new Date().getTime() - bottleThrowTime;
 
-  if (timePassed > 1000 && directionRight ) {
+  if (timePassed > 1000 &amp;&amp; directionRight ) {
     AUDIO_THROW.play();
 
     collectedBottles--;
@@ -1581,13 +1609,13 @@ function keydown() {
       lastKeyPressed = 0;
     }
 
-    if (k == "d" && collectedBottles > 0) {
+    if (k == "d" &amp;&amp; collectedBottles > 0) {
       keydownCollectedBottles();
     }
 
     let timePassedSinceJump = new Date().getTime() - lastJumpStarted;
 
-    if (e.code == "Space" && timePassedSinceJump > JUMP_TIME * 4) {
+    if (e.code == "Space" &amp;&amp; timePassedSinceJump > JUMP_TIME * 4) {
       keydownJump();
       lastKeyPressed = 0;
     }
@@ -1615,7 +1643,7 @@ function keyup() {
     let timePassedSinceJump = new Date().getTime() - lastJumpStarted;
 
 
-    if (e.code == "Space" && timePassedSinceJump > JUMP_TIME * 4) {
+    if (e.code == "Space" &amp;&amp; timePassedSinceJump > JUMP_TIME * 4) {
       isJumping = false;
     }
   });
@@ -1631,3 +1659,26 @@ function listenForKeys() {
 
   keyup();
 }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addBackground">addBackground</a></li><li><a href="global.html#addBackgroundObject">addBackgroundObject</a></li><li><a href="global.html#animatedJump">animatedJump</a></li><li><a href="global.html#animatedJumpLeft">animatedJumpLeft</a></li><li><a href="global.html#baseImage_addBackgroundObject">baseImage_addBackgroundObject</a></li><li><a href="global.html#baseImage_bosslifeDisplay">baseImage_bosslifeDisplay</a></li><li><a href="global.html#baseImage_Bottle">baseImage_Bottle</a></li><li><a href="global.html#baseImage_brownChicken">baseImage_brownChicken</a></li><li><a href="global.html#baseImage_coinDisplay">baseImage_coinDisplay</a></li><li><a href="global.html#baseImage_lifeDisplay">baseImage_lifeDisplay</a></li><li><a href="global.html#baseImage_tabascoDisplay">baseImage_tabascoDisplay</a></li><li><a href="global.html#baseImage_updateCharacter">baseImage_updateCharacter</a></li><li><a href="global.html#baseImage_yellowChicken">baseImage_yellowChicken</a></li><li><a href="global.html#bossAttack">bossAttack</a></li><li><a href="global.html#bossCaution">bossCaution</a></li><li><a href="global.html#bossChicken_move">bossChicken_move</a></li><li><a href="global.html#bossDead">bossDead</a></li><li><a href="global.html#bossHurt">bossHurt</a></li><li><a href="global.html#bossWalk">bossWalk</a></li><li><a href="global.html#brownChicken_animated">brownChicken_animated</a></li><li><a href="global.html#brownChicken_move">brownChicken_move</a></li><li><a href="global.html#calculateChickenBrownPosition">calculateChickenBrownPosition</a></li><li><a href="global.html#calculateChickenYellowPosition">calculateChickenYellowPosition</a></li><li><a href="global.html#changeTouchpointRef">changeTouchpointRef</a></li><li><a href="global.html#checkAnimation">checkAnimation</a></li><li><a href="global.html#checkBoss">checkBoss</a></li><li><a href="global.html#checkBossPepe">checkBossPepe</a></li><li><a href="global.html#checkBottle">checkBottle</a></li><li><a href="global.html#checkChickenBrown">checkChickenBrown</a></li><li><a href="global.html#checkChickenYellow">checkChickenYellow</a></li><li><a href="global.html#checkCoins">checkCoins</a></li><li><a href="global.html#checkForCollision_new">checkForCollision_new</a></li><li><a href="global.html#checkHurting">checkHurting</a></li><li><a href="global.html#checkInactive">checkInactive</a></li><li><a href="global.html#checkLife">checkLife</a></li><li><a href="global.html#checkMovingLeft">checkMovingLeft</a></li><li><a href="global.html#checkMovingRight">checkMovingRight</a></li><li><a href="global.html#checkNotMoving">checkNotMoving</a></li><li><a href="global.html#checkSleep">checkSleep</a></li><li><a href="global.html#create_newChicken">create_newChicken</a></li><li><a href="global.html#createChicken_Brown">createChicken_Brown</a></li><li><a href="global.html#createChicken_Yellow">createChicken_Yellow</a></li><li><a href="global.html#detectMovingDirection">detectMovingDirection</a></li><li><a href="global.html#draw">draw</a></li><li><a href="global.html#draw_bosslifeDisplay">draw_bosslifeDisplay</a></li><li><a href="global.html#draw_coinDisplay">draw_coinDisplay</a></li><li><a href="global.html#draw_lifeDisplay">draw_lifeDisplay</a></li><li><a href="global.html#draw_tabascoDisplay">draw_tabascoDisplay</a></li><li><a href="global.html#drawBackground">drawBackground</a></li><li><a href="global.html#drawBottles">drawBottles</a></li><li><a href="global.html#drawCoins">drawCoins</a></li><li><a href="global.html#drawEndbossdistance">drawEndbossdistance</a></li><li><a href="global.html#drawFinalBoss">drawFinalBoss</a></li><li><a href="global.html#drawFinalScreen">drawFinalScreen</a></li><li><a href="global.html#drawGround">drawGround</a></li><li><a href="global.html#drawLifes">drawLifes</a></li><li><a href="global.html#drawThrowBottle">drawThrowBottle</a></li><li><a href="global.html#finalBoss_dead">finalBoss_dead</a></li><li><a href="global.html#finalBossenergy_decrease">finalBossenergy_decrease</a></li><li><a href="global.html#finishLevel">finishLevel</a></li><li><a href="global.html#gameMode">gameMode</a></li><li><a href="global.html#gameOver">gameOver</a></li><li><a href="global.html#handleEnd">handleEnd</a></li><li><a href="global.html#handleMove">handleMove</a></li><li><a href="global.html#handleStart">handleStart</a></li><li><a href="global.html#hurt">hurt</a></li><li><a href="global.html#hurtLeft">hurtLeft</a></li><li><a href="global.html#inactive">inactive</a></li><li><a href="global.html#inactiveLeft">inactiveLeft</a></li><li><a href="global.html#initStart_Game">initStart_Game</a></li><li><a href="global.html#keydown">keydown</a></li><li><a href="global.html#keydownCollectedBottles">keydownCollectedBottles</a></li><li><a href="global.html#keydownJump">keydownJump</a></li><li><a href="global.html#keyup">keyup</a></li><li><a href="global.html#listenForKeys">listenForKeys</a></li><li><a href="global.html#liveEnergy_zero">liveEnergy_zero</a></li><li><a href="global.html#moveBottle">moveBottle</a></li><li><a href="global.html#moveOnMobile">moveOnMobile</a></li><li><a href="global.html#movingLeft">movingLeft</a></li><li><a href="global.html#movingRight">movingRight</a></li><li><a href="global.html#preloadImages">preloadImages</a></li><li><a href="global.html#restart">restart</a></li><li><a href="global.html#sleep">sleep</a></li><li><a href="global.html#sleepLeft">sleepLeft</a></li><li><a href="global.html#startGame">startGame</a></li><li><a href="global.html#startupMobileListeners">startupMobileListeners</a></li><li><a href="global.html#touchStart">touchStart</a></li><li><a href="global.html#triggerJump">triggerJump</a></li><li><a href="global.html#updateCharacter">updateCharacter</a></li><li><a href="global.html#yellowChicken_animated">yellowChicken_animated</a></li><li><a href="global.html#yellowChicken_move">yellowChicken_move</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Mon Mar 15 2021 11:44:40 GMT+0100 (GMT+01:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

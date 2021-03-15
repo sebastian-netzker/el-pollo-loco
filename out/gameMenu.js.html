@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: gameMenu.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: gameMenu.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+
+/**
+ * This function can choose between normal and fullscreen mode
+ */
+
+function gameMode() {
+  start_screen = false;
+  fullscreen = false;
+
+
+
+  document.getElementById("start-btn").classList.add("d-none");
+  checkForCollision_new();
+}
+
+
+/**
+ * This function  can restart the game
+ */
+
+function restart(){
+
+  document.getElementById('restart-btn').classList.add('d-none');
+
+  document.getElementById('start-btn').classList.remove('d-none');
+
+  start_screen = true;
+
+  game_over = false;
+
+  //game_finished = false; 
+
+  live_energy = 100; 
+
+  collectedCoins = 0;
+
+  collectedBottles = 5;
+
+  bg_elements = 0;
+
+  
+}
+
+
+
+
+
+
+
+
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addBackground">addBackground</a></li><li><a href="global.html#addBackgroundObject">addBackgroundObject</a></li><li><a href="global.html#animatedJump">animatedJump</a></li><li><a href="global.html#animatedJumpLeft">animatedJumpLeft</a></li><li><a href="global.html#baseImage_addBackgroundObject">baseImage_addBackgroundObject</a></li><li><a href="global.html#baseImage_bosslifeDisplay">baseImage_bosslifeDisplay</a></li><li><a href="global.html#baseImage_Bottle">baseImage_Bottle</a></li><li><a href="global.html#baseImage_brownChicken">baseImage_brownChicken</a></li><li><a href="global.html#baseImage_coinDisplay">baseImage_coinDisplay</a></li><li><a href="global.html#baseImage_lifeDisplay">baseImage_lifeDisplay</a></li><li><a href="global.html#baseImage_tabascoDisplay">baseImage_tabascoDisplay</a></li><li><a href="global.html#baseImage_updateCharacter">baseImage_updateCharacter</a></li><li><a href="global.html#baseImage_yellowChicken">baseImage_yellowChicken</a></li><li><a href="global.html#bossAttack">bossAttack</a></li><li><a href="global.html#bossCaution">bossCaution</a></li><li><a href="global.html#bossChicken_move">bossChicken_move</a></li><li><a href="global.html#bossDead">bossDead</a></li><li><a href="global.html#bossHurt">bossHurt</a></li><li><a href="global.html#bossWalk">bossWalk</a></li><li><a href="global.html#brownChicken_animated">brownChicken_animated</a></li><li><a href="global.html#brownChicken_move">brownChicken_move</a></li><li><a href="global.html#calculateChickenBrownPosition">calculateChickenBrownPosition</a></li><li><a href="global.html#calculateChickenYellowPosition">calculateChickenYellowPosition</a></li><li><a href="global.html#changeTouchpointRef">changeTouchpointRef</a></li><li><a href="global.html#checkAnimation">checkAnimation</a></li><li><a href="global.html#checkBoss">checkBoss</a></li><li><a href="global.html#checkBossPepe">checkBossPepe</a></li><li><a href="global.html#checkBottle">checkBottle</a></li><li><a href="global.html#checkChickenBrown">checkChickenBrown</a></li><li><a href="global.html#checkChickenYellow">checkChickenYellow</a></li><li><a href="global.html#checkCoins">checkCoins</a></li><li><a href="global.html#checkForCollision_new">checkForCollision_new</a></li><li><a href="global.html#checkHurting">checkHurting</a></li><li><a href="global.html#checkInactive">checkInactive</a></li><li><a href="global.html#checkLife">checkLife</a></li><li><a href="global.html#checkMovingLeft">checkMovingLeft</a></li><li><a href="global.html#checkMovingRight">checkMovingRight</a></li><li><a href="global.html#checkNotMoving">checkNotMoving</a></li><li><a href="global.html#checkSleep">checkSleep</a></li><li><a href="global.html#create_newChicken">create_newChicken</a></li><li><a href="global.html#createChicken_Brown">createChicken_Brown</a></li><li><a href="global.html#createChicken_Yellow">createChicken_Yellow</a></li><li><a href="global.html#detectMovingDirection">detectMovingDirection</a></li><li><a href="global.html#draw">draw</a></li><li><a href="global.html#draw_bosslifeDisplay">draw_bosslifeDisplay</a></li><li><a href="global.html#draw_coinDisplay">draw_coinDisplay</a></li><li><a href="global.html#draw_lifeDisplay">draw_lifeDisplay</a></li><li><a href="global.html#draw_tabascoDisplay">draw_tabascoDisplay</a></li><li><a href="global.html#drawBackground">drawBackground</a></li><li><a href="global.html#drawBottles">drawBottles</a></li><li><a href="global.html#drawCoins">drawCoins</a></li><li><a href="global.html#drawEndbossdistance">drawEndbossdistance</a></li><li><a href="global.html#drawFinalBoss">drawFinalBoss</a></li><li><a href="global.html#drawFinalScreen">drawFinalScreen</a></li><li><a href="global.html#drawGround">drawGround</a></li><li><a href="global.html#drawLifes">drawLifes</a></li><li><a href="global.html#drawThrowBottle">drawThrowBottle</a></li><li><a href="global.html#finalBoss_dead">finalBoss_dead</a></li><li><a href="global.html#finalBossenergy_decrease">finalBossenergy_decrease</a></li><li><a href="global.html#finishLevel">finishLevel</a></li><li><a href="global.html#gameMode">gameMode</a></li><li><a href="global.html#gameOver">gameOver</a></li><li><a href="global.html#handleEnd">handleEnd</a></li><li><a href="global.html#handleMove">handleMove</a></li><li><a href="global.html#handleStart">handleStart</a></li><li><a href="global.html#hurt">hurt</a></li><li><a href="global.html#hurtLeft">hurtLeft</a></li><li><a href="global.html#inactive">inactive</a></li><li><a href="global.html#inactiveLeft">inactiveLeft</a></li><li><a href="global.html#initStart_Game">initStart_Game</a></li><li><a href="global.html#keydown">keydown</a></li><li><a href="global.html#keydownCollectedBottles">keydownCollectedBottles</a></li><li><a href="global.html#keydownJump">keydownJump</a></li><li><a href="global.html#keyup">keyup</a></li><li><a href="global.html#listenForKeys">listenForKeys</a></li><li><a href="global.html#liveEnergy_zero">liveEnergy_zero</a></li><li><a href="global.html#moveBottle">moveBottle</a></li><li><a href="global.html#moveOnMobile">moveOnMobile</a></li><li><a href="global.html#movingLeft">movingLeft</a></li><li><a href="global.html#movingRight">movingRight</a></li><li><a href="global.html#preloadImages">preloadImages</a></li><li><a href="global.html#restart">restart</a></li><li><a href="global.html#sleep">sleep</a></li><li><a href="global.html#sleepLeft">sleepLeft</a></li><li><a href="global.html#startGame">startGame</a></li><li><a href="global.html#startupMobileListeners">startupMobileListeners</a></li><li><a href="global.html#touchStart">touchStart</a></li><li><a href="global.html#triggerJump">triggerJump</a></li><li><a href="global.html#updateCharacter">updateCharacter</a></li><li><a href="global.html#yellowChicken_animated">yellowChicken_animated</a></li><li><a href="global.html#yellowChicken_move">yellowChicken_move</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Mon Mar 15 2021 11:44:40 GMT+0100 (GMT+01:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

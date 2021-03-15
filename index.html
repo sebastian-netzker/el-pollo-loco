@@ -6,42 +6,54 @@
     <title>El Pollo Loco</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Peta&display=swap" rel="stylesheet">
+
+
     <script src="game.js"></script>
-    <script src="gameMenu.js"></script>
+    <script src="touch_mobiledevices.js"></script>
+    <script src="gameConfiguration.js"></script>
+    <script src="variable.js"></script>
+    <script src="imgArray.js"></script>
+    <script src="pictureIndexAnimation.js"></script>
+
+    
 </head>
-<body id="body" onload="init()">
+<body id="body" onload="initLoading_Game()">
 
     <h1 id="h1">El Pollo Loco</h1>
 
-    <canvas  id="canvas" width="860" height="480" >
 
+<div class="wrapper">
 
-        
+    <div class="container">
 
-    
+    <canvas  id="canvas" width="860" height="480" >   
 
     </canvas>
-     
-    <button onclick="gameMode()"  id="start-btn" class="third">Start Game</button>
 
-    <button onclick="startNormal()" id="normalmode-btn" class="third left-side d-none">normal mode</button>
+    <div class="overlay">
 
-    <button onclick="fullscreenGame()" id="fullscreenmode-btn" class="third right-side d-none">fullscreen mode</button>
+        <div id="start-btn" class="button">
 
-    <button onclick="restart()" id="restart-btn" class="third d-none">Restart</button>
+            <a onclick="startGame()"  href="#">Start</a>
 
-   
+        </div>
 
+        <div id="restart-btn" class="button d-none">
 
+            <a onclick="window.location.reload()" href="#">Restart</a>
 
-   <div  class="game-description">
-    
-        <p class="d-none" id="description1" >d button = throw bottle</p>
-        <p class="d-none" id="description2">left arrow = move Left</p>
-        <p class="d-none" id="description3">right arrow = move Right</p>
-        <p class="d-none" id="description4">space button = Jump</p>
+        </div>
+
     </div>
+
+</div>
+</div>
     
+
+    <div class="description">
+        <h4>Run: Arrow left/right | Jump: space-bar | Throw Tabasco: d </h4>
+        
+    </div>
     
 </body>
 </html>
